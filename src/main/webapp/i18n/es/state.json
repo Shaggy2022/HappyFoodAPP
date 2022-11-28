@@ -1,0 +1,9 @@
+{
+  "happyFoodApp": {
+    "State": {
+      "null": "",
+      "ACTIVE": "Activo",
+      "INACTIVE": "Inactivo"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "happyFoodApp": {
+    "horary": {
+      "home": {
+        "title": "Horaries",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Horary",
+        "createOrEditLabel": "Crear o editar Horary",
+        "notFound": "Ningún Horaries encontrado"
+      },
+      "created": "Un nuevo Horary ha sido creado con el identificador {{ param }}",
+      "updated": "Un Horary ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Horary ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Horary {{ id }}?"
+      },
+      "detail": {
+        "title": "Horary"
+      },
+      "id": "ID",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "workDay": "Work Day"
+    }
+  }
+}

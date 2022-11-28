@@ -1,0 +1,33 @@
+{
+  "applications": ["happyFood"],
+  "changelogDate": "20221128063359",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "horary",
+  "fields": [
+    {
+      "fieldName": "startTime",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "endTime",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Horary",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "workDay",
+      "otherEntityRelationshipName": "horary",
+      "relationshipName": "workDay",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

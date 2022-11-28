@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="workDay">
+      <h2 data-cy="workDayDetailsHeading"><span happyTranslate="happyFoodApp.workDay.detail.title">Work Day</span></h2>
+
+      <hr />
+
+      <happy-alert-error></happy-alert-error>
+
+      <happy-alert></happy-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span happyTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ workDay.id }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.workDay.dayName">Day Name</span></dt>
+        <dd>
+          <span>{{ workDay.dayName }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.workDay.month">Month</span></dt>
+        <dd>
+          <span>{{ workDay.month }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.workDay.state">State</span></dt>
+        <dd>
+          <span happyTranslate="{{ 'happyFoodApp.State.' + workDay.state }}">{{ workDay.state }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.workDay.horary">Horary</span></dt>
+        <dd>
+          <div *ngIf="workDay.horary">
+            <a [routerLink]="['/horary', workDay.horary?.id, 'view']">{{ workDay.horary?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span happyTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/work-day', workDay.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span happyTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

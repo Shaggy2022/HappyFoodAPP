@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="manager">
+      <h2 data-cy="managerDetailsHeading"><span happyTranslate="happyFoodApp.manager.detail.title">Manager</span></h2>
+
+      <hr />
+
+      <happy-alert-error></happy-alert-error>
+
+      <happy-alert></happy-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span happyTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ manager.id }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.manager.documentNumber">Document Number</span></dt>
+        <dd>
+          <span>{{ manager.documentNumber }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.manager.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ manager.firstName }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.manager.secondName">Second Name</span></dt>
+        <dd>
+          <span>{{ manager.secondName }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.manager.firstLastname">First Lastname</span></dt>
+        <dd>
+          <span>{{ manager.firstLastname }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.manager.secondLastname">Second Lastname</span></dt>
+        <dd>
+          <span>{{ manager.secondLastname }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.manager.user">User</span></dt>
+        <dd>
+          <span>{{ manager.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span happyTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/manager', manager.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span happyTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

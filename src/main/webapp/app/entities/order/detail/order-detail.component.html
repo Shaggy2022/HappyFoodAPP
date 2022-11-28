@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="order">
+      <h2 data-cy="orderDetailsHeading"><span happyTranslate="happyFoodApp.order.detail.title">Order</span></h2>
+
+      <hr />
+
+      <happy-alert-error></happy-alert-error>
+
+      <happy-alert></happy-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span happyTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ order.id }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.order.orderRequired">Order Required</span></dt>
+        <dd>
+          <span>{{ order.orderRequired }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.order.date">Date</span></dt>
+        <dd>
+          <span>{{ order.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.order.amount">Amount</span></dt>
+        <dd>
+          <span>{{ order.amount }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.order.fullOrderValue">Full Order Value</span></dt>
+        <dd>
+          <span>{{ order.fullOrderValue }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.order.customer">Customer</span></dt>
+        <dd>
+          <div *ngIf="order.customer">
+            <a [routerLink]="['/customer', order.customer?.id, 'view']">{{ order.customer?.firstName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span happyTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/order', order.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span happyTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+{
+  "applications": ["happyFood"],
+  "changelogDate": "20221128063259",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "work_day",
+  "fields": [
+    {
+      "fieldName": "dayName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "40"
+    },
+    {
+      "fieldName": "month",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "40"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Activo),INACTIVE (Inactivo)"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "WorkDay",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "workDay",
+      "relationshipName": "employee",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "horary",
+      "otherEntityRelationshipName": "workDay",
+      "relationshipName": "horary",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

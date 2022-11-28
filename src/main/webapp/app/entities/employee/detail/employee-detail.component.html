@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employee">
+      <h2 data-cy="employeeDetailsHeading"><span happyTranslate="happyFoodApp.employee.detail.title">Employee</span></h2>
+
+      <hr />
+
+      <happy-alert-error></happy-alert-error>
+
+      <happy-alert></happy-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span happyTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employee.id }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.documentNumber">Document Number</span></dt>
+        <dd>
+          <span>{{ employee.documentNumber }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ employee.firstName }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.secondName">Second Name</span></dt>
+        <dd>
+          <span>{{ employee.secondName }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.firstLastname">First Lastname</span></dt>
+        <dd>
+          <span>{{ employee.firstLastname }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.secondLastname">Second Lastname</span></dt>
+        <dd>
+          <span>{{ employee.secondLastname }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.position">Position</span></dt>
+        <dd>
+          <span>{{ employee.position }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ employee.phoneNumber }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.address">Address</span></dt>
+        <dd>
+          <span>{{ employee.address }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.state">State</span></dt>
+        <dd>
+          <span happyTranslate="{{ 'happyFoodApp.State.' + employee.state }}">{{ employee.state }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.user">User</span></dt>
+        <dd>
+          <span>{{ employee.user?.login }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.workDay">Work Day</span></dt>
+        <dd>
+          <div *ngIf="employee.workDay">
+            <a [routerLink]="['/work-day', employee.workDay?.id, 'view']">{{ employee.workDay?.dayName }}</a>
+          </div>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.employee.manager">Manager</span></dt>
+        <dd>
+          <div *ngIf="employee.manager">
+            <a [routerLink]="['/manager', employee.manager?.id, 'view']">{{ employee.manager?.firstName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span happyTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employee', employee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span happyTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

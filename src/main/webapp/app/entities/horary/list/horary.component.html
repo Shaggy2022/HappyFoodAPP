@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="HoraryHeading">
+    <span happyTranslate="happyFoodApp.horary.home.title">Horaries</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span happyTranslate="happyFoodApp.horary.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-horary"
+        [routerLink]="['/horary/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span happyTranslate="happyFoodApp.horary.home.createLabel"> Create a new Horary </span>
+      </button>
+    </div>
+  </h2>
+
+  <happy-alert-error></happy-alert-error>
+
+  <happy-alert></happy-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="horaries?.length === 0">
+    <span happyTranslate="happyFoodApp.horary.home.notFound">No horaries found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="horaries && horaries.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr happySort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" happySortBy="id"><span happyTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" happySortBy="startTime">
+            <span happyTranslate="happyFoodApp.horary.startTime">Start Time</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="endTime">
+            <span happyTranslate="happyFoodApp.horary.endTime">End Time</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let horary of horaries; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/horary', horary.id, 'view']">{{ horary.id }}</a>
+          </td>
+          <td>{{ horary.startTime }}</td>
+          <td>{{ horary.endTime }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/horary', horary.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" happyTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/horary', horary.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" happyTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(horary)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" happyTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="horaries && horaries.length > 0">
+    <div class="d-flex justify-content-center">
+      <happy-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></happy-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

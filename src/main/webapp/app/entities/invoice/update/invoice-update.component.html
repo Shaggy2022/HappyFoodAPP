@@ -1,0 +1,129 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="happy-invoice-heading" data-cy="InvoiceCreateUpdateHeading" happyTranslate="happyFoodApp.invoice.home.createOrEditLabel">
+        Create or edit a Invoice
+      </h2>
+
+      <div>
+        <happy-alert-error></happy-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" happyTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.invoice.invoiceNumber" for="field_invoiceNumber">Invoice Number</label>
+          <input
+            type="number"
+            class="form-control"
+            name="invoiceNumber"
+            id="field_invoiceNumber"
+            data-cy="invoiceNumber"
+            formControlName="invoiceNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('invoiceNumber')!.invalid && (editForm.get('invoiceNumber')!.dirty || editForm.get('invoiceNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('invoiceNumber')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('invoiceNumber')?.errors?.number"
+              happyTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.invoice.iva" for="field_iva">Iva</label>
+          <input type="number" class="form-control" name="iva" id="field_iva" data-cy="iva" formControlName="iva" />
+          <div *ngIf="editForm.get('iva')!.invalid && (editForm.get('iva')!.dirty || editForm.get('iva')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('iva')?.errors?.required" happyTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('iva')?.errors?.number" happyTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.invoice.totalToPay" for="field_totalToPay">Total To Pay</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalToPay"
+            id="field_totalToPay"
+            data-cy="totalToPay"
+            formControlName="totalToPay"
+          />
+          <div *ngIf="editForm.get('totalToPay')!.invalid && (editForm.get('totalToPay')!.dirty || editForm.get('totalToPay')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('totalToPay')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('totalToPay')?.errors?.number"
+              happyTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.invoice.order" for="field_order">Order</label>
+          <select class="form-control" id="field_order" data-cy="order" name="order" formControlName="order">
+            <option *ngIf="!editForm.get('order')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="orderOption.id === editForm.get('order')!.value?.id ? editForm.get('order')!.value : orderOption"
+              *ngFor="let orderOption of ordersSharedCollection; trackBy: trackOrderById"
+            >
+              {{ orderOption.orderRequired }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['order'])!.invalid && (editForm.get(['order'])!.dirty || editForm.get(['order'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['order'])?.errors?.required"
+            happyTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span happyTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span happyTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

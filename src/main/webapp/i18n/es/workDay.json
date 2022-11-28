@@ -1,0 +1,28 @@
+{
+  "happyFoodApp": {
+    "workDay": {
+      "home": {
+        "title": "Work Days",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Work Day",
+        "createOrEditLabel": "Crear o editar Work Day",
+        "notFound": "Ningún Work Days encontrado"
+      },
+      "created": "Un nuevo Work Day ha sido creado con el identificador {{ param }}",
+      "updated": "Un Work Day ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Work Day ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Work Day {{ id }}?"
+      },
+      "detail": {
+        "title": "Work Day"
+      },
+      "id": "ID",
+      "dayName": "Day Name",
+      "month": "Month",
+      "state": "State",
+      "employee": "Employee",
+      "horary": "Horary"
+    }
+  }
+}

@@ -1,0 +1,152 @@
+<div>
+  <h2 id="page-heading" data-cy="EmployeeHeading">
+    <span happyTranslate="happyFoodApp.employee.home.title">Employees</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span happyTranslate="happyFoodApp.employee.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-employee"
+        [routerLink]="['/employee/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span happyTranslate="happyFoodApp.employee.home.createLabel"> Create a new Employee </span>
+      </button>
+    </div>
+  </h2>
+
+  <happy-alert-error></happy-alert-error>
+
+  <happy-alert></happy-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="employees?.length === 0">
+    <span happyTranslate="happyFoodApp.employee.home.notFound">No employees found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="employees && employees.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr happySort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" happySortBy="id"><span happyTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" happySortBy="documentNumber">
+            <span happyTranslate="happyFoodApp.employee.documentNumber">Document Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="firstName">
+            <span happyTranslate="happyFoodApp.employee.firstName">First Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="secondName">
+            <span happyTranslate="happyFoodApp.employee.secondName">Second Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="firstLastname">
+            <span happyTranslate="happyFoodApp.employee.firstLastname">First Lastname</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="secondLastname">
+            <span happyTranslate="happyFoodApp.employee.secondLastname">Second Lastname</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="position">
+            <span happyTranslate="happyFoodApp.employee.position">Position</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="phoneNumber">
+            <span happyTranslate="happyFoodApp.employee.phoneNumber">Phone Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="address">
+            <span happyTranslate="happyFoodApp.employee.address">Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="state">
+            <span happyTranslate="happyFoodApp.employee.state">State</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="user.login">
+            <span happyTranslate="happyFoodApp.employee.user">User</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="workDay.dayName">
+            <span happyTranslate="happyFoodApp.employee.workDay">Work Day</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" happySortBy="manager.firstName">
+            <span happyTranslate="happyFoodApp.employee.manager">Manager</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/employee', employee.id, 'view']">{{ employee.id }}</a>
+          </td>
+          <td>{{ employee.documentNumber }}</td>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.secondName }}</td>
+          <td>{{ employee.firstLastname }}</td>
+          <td>{{ employee.secondLastname }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.phoneNumber }}</td>
+          <td>{{ employee.address }}</td>
+          <td happyTranslate="{{ 'happyFoodApp.State.' + employee.state }}">{{ employee.state }}</td>
+          <td>
+            {{ employee.user?.login }}
+          </td>
+          <td>
+            <div *ngIf="employee.workDay">
+              <a [routerLink]="['/work-day', employee.workDay?.id, 'view']">{{ employee.workDay?.dayName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="employee.manager">
+              <a [routerLink]="['/manager', employee.manager?.id, 'view']">{{ employee.manager?.firstName }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/employee', employee.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" happyTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/employee', employee.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" happyTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(employee)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" happyTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="employees && employees.length > 0">
+    <div class="d-flex justify-content-center">
+      <happy-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></happy-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

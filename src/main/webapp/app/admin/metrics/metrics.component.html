@@ -1,0 +1,51 @@
+<div>
+  <h2>
+    <span id="metrics-page-heading" happyTranslate="metrics.title" data-cy="metricsPageHeading">Application Metrics</span>
+
+    <button class="btn btn-primary float-end" (click)="refresh()">
+      <fa-icon icon="sync"></fa-icon> <span happyTranslate="metrics.refresh.button">Refresh</span>
+    </button>
+  </h2>
+
+  <h3 happyTranslate="metrics.jvm.title">JVM Metrics</h3>
+
+  <div class="row" *ngIf="metrics && !updatingMetrics">
+    <happy-jvm-memory class="col-md-4" [updating]="updatingMetrics" [jvmMemoryMetrics]="metrics.jvm"></happy-jvm-memory>
+
+    <happy-jvm-threads class="col-md-4" [threads]="threads"></happy-jvm-threads>
+
+    <happy-metrics-system class="col-md-4" [updating]="updatingMetrics" [systemMetrics]="metrics.processMetrics"></happy-metrics-system>
+  </div>
+
+  <happy-metrics-garbagecollector
+    *ngIf="metrics && metricsKeyExists('garbageCollector')"
+    [updating]="updatingMetrics"
+    [garbageCollectorMetrics]="metrics.garbageCollector"
+  ></happy-metrics-garbagecollector>
+
+  <div class="well well-lg" *ngIf="updatingMetrics" happyTranslate="metrics.updating">Updating...</div>
+
+  <happy-metrics-request
+    *ngIf="metrics && metricsKeyExists('http.server.requests')"
+    [updating]="updatingMetrics"
+    [requestMetrics]="metrics['http.server.requests']"
+  ></happy-metrics-request>
+
+  <happy-metrics-endpoints-requests
+    *ngIf="metrics && metricsKeyExists('services')"
+    [updating]="updatingMetrics"
+    [endpointsRequestsMetrics]="metrics.services"
+  ></happy-metrics-endpoints-requests>
+
+  <happy-metrics-cache
+    *ngIf="metrics && metricsKeyExists('cache')"
+    [updating]="updatingMetrics"
+    [cacheMetrics]="metrics.cache"
+  ></happy-metrics-cache>
+
+  <happy-metrics-datasource
+    *ngIf="metrics && metricsKeyExistsAndObjectNotEmpty('databases')"
+    [updating]="updatingMetrics"
+    [datasourceMetrics]="metrics.databases"
+  ></happy-metrics-datasource>
+</div>

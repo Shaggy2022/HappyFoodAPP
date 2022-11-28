@@ -1,0 +1,322 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="happy-employee-heading" data-cy="EmployeeCreateUpdateHeading" happyTranslate="happyFoodApp.employee.home.createOrEditLabel">
+        Create or edit a Employee
+      </h2>
+
+      <div>
+        <happy-alert-error></happy-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" happyTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.documentNumber" for="field_documentNumber">Document Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="documentNumber"
+            id="field_documentNumber"
+            data-cy="documentNumber"
+            formControlName="documentNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('documentNumber')!.invalid && (editForm.get('documentNumber')!.dirty || editForm.get('documentNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('documentNumber')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('documentNumber')?.errors?.maxlength"
+              happyTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.firstName" for="field_firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+          <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('firstName')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('firstName')?.errors?.maxlength"
+              happyTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.secondName" for="field_secondName">Second Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="secondName"
+            id="field_secondName"
+            data-cy="secondName"
+            formControlName="secondName"
+          />
+          <div *ngIf="editForm.get('secondName')!.invalid && (editForm.get('secondName')!.dirty || editForm.get('secondName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('secondName')?.errors?.maxlength"
+              happyTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.firstLastname" for="field_firstLastname">First Lastname</label>
+          <input
+            type="text"
+            class="form-control"
+            name="firstLastname"
+            id="field_firstLastname"
+            data-cy="firstLastname"
+            formControlName="firstLastname"
+          />
+          <div
+            *ngIf="
+              editForm.get('firstLastname')!.invalid && (editForm.get('firstLastname')!.dirty || editForm.get('firstLastname')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('firstLastname')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('firstLastname')?.errors?.maxlength"
+              happyTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.secondLastname" for="field_secondLastname">Second Lastname</label>
+          <input
+            type="text"
+            class="form-control"
+            name="secondLastname"
+            id="field_secondLastname"
+            data-cy="secondLastname"
+            formControlName="secondLastname"
+          />
+          <div
+            *ngIf="
+              editForm.get('secondLastname')!.invalid && (editForm.get('secondLastname')!.dirty || editForm.get('secondLastname')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('secondLastname')?.errors?.maxlength"
+              happyTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.position" for="field_position">Position</label>
+          <input type="text" class="form-control" name="position" id="field_position" data-cy="position" formControlName="position" />
+          <div *ngIf="editForm.get('position')!.invalid && (editForm.get('position')!.dirty || editForm.get('position')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('position')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('position')?.errors?.maxlength"
+              happyTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.phoneNumber" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+          <div *ngIf="editForm.get('phoneNumber')!.invalid && (editForm.get('phoneNumber')!.dirty || editForm.get('phoneNumber')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('phoneNumber')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('phoneNumber')?.errors?.maxlength"
+              happyTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.address" for="field_address">Address</label>
+          <input type="text" class="form-control" name="address" id="field_address" data-cy="address" formControlName="address" />
+          <div *ngIf="editForm.get('address')!.invalid && (editForm.get('address')!.dirty || editForm.get('address')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('address')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('address')?.errors?.maxlength"
+              happyTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.state" for="field_state">State</label>
+          <select class="form-control" name="state" formControlName="state" id="field_state" data-cy="state">
+            <option [ngValue]="null">{{ 'happyFoodApp.State.null' | translate }}</option>
+            <option *ngFor="let state of stateValues" [value]="state">{{ 'happyFoodApp.State.' + state | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('state')!.invalid && (editForm.get('state')!.dirty || editForm.get('state')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('state')?.errors?.required"
+              happyTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option *ngIf="!editForm.get('user')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['user'])!.invalid && (editForm.get(['user'])!.dirty || editForm.get(['user'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['user'])?.errors?.required" happyTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.workDay" for="field_workDay">Work Day</label>
+          <select class="form-control" id="field_workDay" data-cy="workDay" name="workDay" formControlName="workDay">
+            <option *ngIf="!editForm.get('workDay')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="workDayOption.id === editForm.get('workDay')!.value?.id ? editForm.get('workDay')!.value : workDayOption"
+              *ngFor="let workDayOption of workDaysSharedCollection; trackBy: trackWorkDayById"
+            >
+              {{ workDayOption.dayName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['workDay'])!.invalid && (editForm.get(['workDay'])!.dirty || editForm.get(['workDay'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['workDay'])?.errors?.required"
+            happyTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" happyTranslate="happyFoodApp.employee.manager" for="field_manager">Manager</label>
+          <select class="form-control" id="field_manager" data-cy="manager" name="manager" formControlName="manager">
+            <option *ngIf="!editForm.get('manager')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="managerOption.id === editForm.get('manager')!.value?.id ? editForm.get('manager')!.value : managerOption"
+              *ngFor="let managerOption of managersSharedCollection; trackBy: trackManagerById"
+            >
+              {{ managerOption.firstName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['manager'])!.invalid && (editForm.get(['manager'])!.dirty || editForm.get(['manager'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['manager'])?.errors?.required"
+            happyTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span happyTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span happyTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+{
+  "applications": ["happyFood"],
+  "changelogDate": "20221128062959",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "invoice",
+  "fields": [
+    {
+      "fieldName": "invoiceNumber",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "iva",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalToPay",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Invoice",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "invoiceProduct",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "invoiceProduct",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "inventory",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "inventory",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "orderRequired",
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "order",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

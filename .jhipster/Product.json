@@ -1,0 +1,48 @@
+{
+  "applications": ["happyFood"],
+  "changelogDate": "20221128063059",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "product",
+  "fields": [
+    {
+      "fieldName": "serial",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "requiredProduct",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "200"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Product",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "invoiceProduct",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "invoiceProduct",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "description",
+      "otherEntityName": "inventory",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "inventory",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,26 @@
+{
+  "happyFoodApp": {
+    "invoiceProduct": {
+      "home": {
+        "title": "Invoice Products",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Invoice Product",
+        "createOrEditLabel": "Crear o editar Invoice Product",
+        "notFound": "Ningún Invoice Products encontrado"
+      },
+      "created": "Un nuevo Invoice Product ha sido creado con el identificador {{ param }}",
+      "updated": "Un Invoice Product ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Invoice Product ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Invoice Product {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Product"
+      },
+      "id": "ID",
+      "date": "Date",
+      "product": "Product",
+      "invoice": "Invoice"
+    }
+  }
+}

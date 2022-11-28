@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="documentType">
+      <h2 data-cy="documentTypeDetailsHeading"><span happyTranslate="happyFoodApp.documentType.detail.title">Document Type</span></h2>
+
+      <hr />
+
+      <happy-alert-error></happy-alert-error>
+
+      <happy-alert></happy-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span happyTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ documentType.id }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.documentType.initials">Initials</span></dt>
+        <dd>
+          <span>{{ documentType.initials }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.documentType.documentName">Document Name</span></dt>
+        <dd>
+          <span>{{ documentType.documentName }}</span>
+        </dd>
+        <dt><span happyTranslate="happyFoodApp.documentType.stateDocumentType">State Document Type</span></dt>
+        <dd>
+          <span happyTranslate="{{ 'happyFoodApp.State.' + documentType.stateDocumentType }}">{{ documentType.stateDocumentType }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span happyTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/document-type', documentType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span happyTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
