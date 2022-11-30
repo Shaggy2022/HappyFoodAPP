@@ -17,7 +17,7 @@
         "manager": "Gerente",
         "employee": "Empleado",
         "order": "Orden",
-        "inventory": "Inventorario",
+        "inventory": "Inventario",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
