@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "HappyFood",
+    "title": "Happy Food",
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
       "home": "Home",
@@ -14,8 +14,10 @@
         "invoiceProduct": "Invoice Product",
         "workDay": "Work Day",
         "horary": "Horary",
+        "horaryDay": "Horary Day",
         "manager": "Manager",
         "employee": "Employee",
+        "supplier": "Supplier",
         "order": "Order",
         "inventory": "Inventory",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
