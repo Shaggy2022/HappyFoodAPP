@@ -2,27 +2,27 @@
   "happyFoodApp": {
     "product": {
       "home": {
-        "title": "Products",
+        "title": "Productos",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Product",
-        "createOrEditLabel": "Crear o editar Product",
-        "notFound": "Ningún Products encontrado"
+        "createLabel": "Crear nuevo Producto",
+        "createOrEditLabel": "Crear o editar Producto",
+        "notFound": "Ningún Producto encontrado"
       },
-      "created": "Un nuevo Product ha sido creado con el identificador {{ param }}",
-      "updated": "Un Product ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Product ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Producto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Producto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Producto ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Product {{ id }}?"
+        "question": "¿Seguro que quiere eliminar un Producto {{ id }}?"
       },
       "detail": {
-        "title": "Product"
+        "title": "Producto"
       },
       "id": "ID",
       "serial": "Serial",
-      "requiredProduct": "Required Product",
-      "price": "Price",
-      "invoiceProduct": "Invoice Product",
-      "inventory": "Inventory"
+      "requiredProduct": "Producto Requerido",
+      "price": "Precio",
+      "invoiceProduct": "Producto Facturado",
+      "inventory": "Inventario"
     }
   }
 }

@@ -2,25 +2,25 @@
   "happyFoodApp": {
     "invoiceProduct": {
       "home": {
-        "title": "Invoice Products",
+        "title": "Productos Facturados",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Invoice Product",
-        "createOrEditLabel": "Crear o editar Invoice Product",
-        "notFound": "Ningún Invoice Products encontrado"
+        "createLabel": "Crear nuevo Producto Facturado",
+        "createOrEditLabel": "Crear o editar Producto Facturado",
+        "notFound": "Ningún Producto Facturado encontrado"
       },
-      "created": "Un nuevo Invoice Product ha sido creado con el identificador {{ param }}",
-      "updated": "Un Invoice Product ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Invoice Product ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Producto Facturado ha sido creado con el identificador {{ param }}",
+      "updated": "Un Producto Facturado ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Producto Facturado ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Invoice Product {{ id }}?"
+        "question": "¿Seguro que quiere eliminar un Producto Facturado {{ id }}?"
       },
       "detail": {
-        "title": "Invoice Product"
+        "title": "Producto Facturado"
       },
       "id": "ID",
-      "date": "Date",
-      "product": "Product",
-      "invoice": "Invoice"
+      "date": "Fecha",
+      "product": "Producto",
+      "invoice": "Factura"
     }
   }
 }

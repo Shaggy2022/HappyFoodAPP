@@ -2,28 +2,27 @@
   "happyFoodApp": {
     "invoice": {
       "home": {
-        "title": "Invoices",
+        "title": "Facturas",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Invoice",
-        "createOrEditLabel": "Crear o editar Invoice",
-        "notFound": "Ningún Invoices encontrado"
+        "createLabel": "Crear nueva Factura",
+        "createOrEditLabel": "Crear o editar Factura",
+        "notFound": "Ninguna Factura encontrado"
       },
-      "created": "Un nuevo Invoice ha sido creado con el identificador {{ param }}",
-      "updated": "Un Invoice ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Invoice ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Factura ha sido creada con el identificador {{ param }}",
+      "updated": "Una Factura ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Factura ha sido eliminada con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Invoice {{ id }}?"
+        "question": "¿Seguro que quiere eliminar una Factura {{ id }}?"
       },
       "detail": {
-        "title": "Invoice"
+        "title": "Factura"
       },
       "id": "ID",
-      "invoiceNumber": "Invoice Number",
+      "invoiceNumber": "Número de la Factura",
       "iva": "Iva",
-      "totalToPay": "Total To Pay",
-      "invoiceProduct": "Invoice Product",
-      "inventory": "Inventory",
-      "order": "Order"
+      "totalToPay": "Total a Pagar",
+      "inventory": "Inventario",
+      "order": "Orden"
     }
   }
 }

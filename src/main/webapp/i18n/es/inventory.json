@@ -2,27 +2,28 @@
   "happyFoodApp": {
     "inventory": {
       "home": {
-        "title": "Inventories",
+        "title": "Inventorarios",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Inventory",
-        "createOrEditLabel": "Crear o editar Inventory",
-        "notFound": "Ningún Inventories encontrado"
+        "createLabel": "Crear nuevo Inventorario",
+        "createOrEditLabel": "Crear o editar Inventorario",
+        "notFound": "Ningún Inventorario encontrado"
       },
-      "created": "Un nuevo Inventory ha sido creado con el identificador {{ param }}",
-      "updated": "Un Inventory ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Inventory ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Inventorario ha sido creado con el identificador {{ param }}",
+      "updated": "Un Inventorario ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Inventorario ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Inventory {{ id }}?"
+        "question": "¿Seguro que quiere eliminar un Inventorario {{ id }}?"
       },
       "detail": {
-        "title": "Inventory"
+        "title": "Inventorario"
       },
       "id": "ID",
-      "amount": "Amount",
-      "description": "Description",
-      "price": "Price",
-      "product": "Product",
-      "invoice": "Invoice"
+      "amount": "Cantidad",
+      "description": "Descripción",
+      "unity": "Unidad",
+      "price": "Precio",
+      "product": "Producto",
+      "invoice": "Factura"
     }
   }
 }

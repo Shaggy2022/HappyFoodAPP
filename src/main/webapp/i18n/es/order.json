@@ -2,28 +2,28 @@
   "happyFoodApp": {
     "order": {
       "home": {
-        "title": "Orders",
+        "title": "Ordenes",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Order",
-        "createOrEditLabel": "Crear o editar Order",
-        "notFound": "Ningún Orders encontrado"
+        "createLabel": "Crear nueva Orden",
+        "createOrEditLabel": "Crear o editar Orden",
+        "notFound": "Ninguna Orden encontrada"
       },
-      "created": "Un nuevo Order ha sido creado con el identificador {{ param }}",
-      "updated": "Un Order ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Order ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Orden ha sido creada con el identificador {{ param }}",
+      "updated": "Una Orden ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Orden ha sido eliminada con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Order {{ id }}?"
+        "question": "¿Seguro que quiere eliminar una Orden {{ id }}?"
       },
       "detail": {
-        "title": "Order"
+        "title": "Orden"
       },
       "id": "ID",
-      "orderRequired": "Order Required",
-      "date": "Date",
-      "amount": "Amount",
-      "fullOrderValue": "Full Order Value",
-      "invoice": "Invoice",
-      "customer": "Customer"
+      "orderRequired": "Orden Requerida",
+      "date": "Fecha",
+      "amount": "Cantidad",
+      "fullOrderValue": "Precio Total de la orden",
+      "invoice": "Factura",
+      "customer": "Cliente"
     }
   }
 }

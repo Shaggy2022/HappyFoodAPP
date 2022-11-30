@@ -14,10 +14,8 @@
         "invoiceProduct": "Invoice Product",
         "workDay": "Work Day",
         "horary": "Horary",
-        "horaryDay": "Horary Day",
         "manager": "Manager",
         "employee": "Employee",
-        "supplier": "Supplier",
         "order": "Order",
         "inventory": "Inventory",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"

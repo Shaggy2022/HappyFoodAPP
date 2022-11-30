@@ -2,32 +2,32 @@
   "happyFoodApp": {
     "customer": {
       "home": {
-        "title": "Customers",
+        "title": "Clientes",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Customer",
-        "createOrEditLabel": "Crear o editar Customer",
-        "notFound": "Ningún Customers encontrado"
+        "createLabel": "Crear nuevo Cliente",
+        "createOrEditLabel": "Crear o editar un Cliente",
+        "notFound": "Ningún Cliente encontrado"
       },
-      "created": "Un nuevo Customer ha sido creado con el identificador {{ param }}",
-      "updated": "Un Customer ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Customer ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Cliente ha sido creado con el identificador {{ param }}",
+      "updated": "Un Cliente ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Cliente ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Customer {{ id }}?"
+        "question": "¿Seguro que quiere eliminar un Cliente {{ id }}?"
       },
       "detail": {
-        "title": "Customer"
+        "title": "Cliente"
       },
       "id": "ID",
-      "firstName": "First Name",
-      "secondName": "Second Name",
-      "firstLastname": "First Lastname",
-      "secondLastname": "Second Lastname",
-      "address": "Address",
-      "phoneNumber": "Phone Number",
-      "documentNumber": "Document Number",
-      "user": "User",
-      "order": "Order",
-      "documentType": "Document Type"
+      "firstName": "Primer Nombre",
+      "secondName": "Segundo Nombre",
+      "firstLastname": "Primer Apellido",
+      "secondLastname": "Segundo Apellido",
+      "address": "Dirección",
+      "phoneNumber": "Número telefónico",
+      "documentNumber": "Número de Documento",
+      "user": "Usuario",
+      "order": "orden",
+      "documentType": "Tipo de Documento"
     }
   }
 }

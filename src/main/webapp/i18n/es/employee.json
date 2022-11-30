@@ -2,34 +2,34 @@
   "happyFoodApp": {
     "employee": {
       "home": {
-        "title": "Employees",
+        "title": "Empleados",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Employee",
-        "createOrEditLabel": "Crear o editar Employee",
-        "notFound": "Ningún Employees encontrado"
+        "createLabel": "Crear nuevo Empleado",
+        "createOrEditLabel": "Crear o editar un Empleado",
+        "notFound": "Ningún Empleado encontrado"
       },
-      "created": "Un nuevo Employee ha sido creado con el identificador {{ param }}",
-      "updated": "Un Employee ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Employee ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Empleado ha sido creado con el identificador {{ param }}",
+      "updated": "Un Empleado ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Empleado ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Employee {{ id }}?"
+        "question": "¿Seguro que quiere eliminar un Empleado {{ id }}?"
       },
       "detail": {
-        "title": "Employee"
+        "title": "Empleado"
       },
       "id": "ID",
-      "documentNumber": "Document Number",
-      "firstName": "First Name",
-      "secondName": "Second Name",
-      "firstLastname": "First Lastname",
-      "secondLastname": "Second Lastname",
-      "position": "Position",
-      "phoneNumber": "Phone Number",
-      "address": "Address",
-      "state": "State",
-      "user": "User",
-      "workDay": "Work Day",
-      "manager": "Manager"
+      "documentNumber": "Número de Documento",
+      "firstName": "Primer Nombre",
+      "secondName": "Segundo Nombre",
+      "firstLastname": "Primer Apellido",
+      "secondLastname": "Segundo Apellido",
+      "position": "Cargo",
+      "phoneNumber": "Número telefónico",
+      "address": "Dirección",
+      "state": "Estado",
+      "user": "Usuario",
+      "workDay": "Jornada Laboral",
+      "manager": "Gerente"
     }
   }
 }

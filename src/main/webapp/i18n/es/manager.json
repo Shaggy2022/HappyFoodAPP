@@ -2,29 +2,29 @@
   "happyFoodApp": {
     "manager": {
       "home": {
-        "title": "Managers",
+        "title": "Gerentes",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Manager",
-        "createOrEditLabel": "Crear o editar Manager",
-        "notFound": "Ningún Managers encontrado"
+        "createLabel": "Crear nuevo Gerente",
+        "createOrEditLabel": "Crear o editar Gerente",
+        "notFound": "Ningún Gerente encontrado"
       },
-      "created": "Un nuevo Manager ha sido creado con el identificador {{ param }}",
-      "updated": "Un Manager ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Manager ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Gerente ha sido creado con el identificador {{ param }}",
+      "updated": "Un Gerente ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Gerente ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Manager {{ id }}?"
+        "question": "¿Seguro que quiere eliminar un Gerente {{ id }}?"
       },
       "detail": {
-        "title": "Manager"
+        "title": "Gerente"
       },
       "id": "ID",
-      "documentNumber": "Document Number",
-      "firstName": "First Name",
-      "secondName": "Second Name",
-      "firstLastname": "First Lastname",
-      "secondLastname": "Second Lastname",
-      "user": "User",
-      "employee": "Employee"
+      "documentNumber": "Número de Documento",
+      "firstName": "Primer Nombre",
+      "secondName": "Segundo Nombre",
+      "firstLastname": "Primer Apellido",
+      "secondLastname": "Segundo Apellido",
+      "user": "Usuario",
+      "employee": "Empleado"
     }
   }
 }
