@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
@@ -65,6 +66,7 @@ public class HappyFoodApp {
      */
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(HappyFoodApp.class);
+        app.setBannerMode(Banner.Mode.OFF);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);
