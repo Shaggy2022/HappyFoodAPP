@@ -9,9 +9,9 @@
     <!--
         Added the entity Manager.
     -->
-    <changeSet id="20221128063459-1" author="jhipster">
+    <changeSet id="20221128063459-1" author="jose">
         <createTable tableName="manager">
-            <column name="id" type="bigint">
+            <column name="id" type="bigserial">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="document_number" type="varchar(50)">
@@ -46,7 +46,7 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20221128063459-1-data" author="jhipster" context="faker">
+    <changeSet id="20221128063459-1-data" author="jose" context="faker">
         <loadData
                   file="config/liquibase/fake-data/manager.csv"
                   separator=";"

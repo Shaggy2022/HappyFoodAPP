@@ -17,14 +17,14 @@ public class Manager implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @NotNull
     @Size(max = 50)
     @Column(name = "document_number", length = 50, nullable = false, unique = true)
+    @JoinColumn(name = "document_number", nullable = false)
     private String documentNumber;
 
     @NotNull
@@ -47,7 +47,7 @@ public class Manager implements Serializable {
 
     @OneToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     @OneToMany(mappedBy = "manager")

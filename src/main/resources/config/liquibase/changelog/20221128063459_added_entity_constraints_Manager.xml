@@ -6,12 +6,16 @@
     <!--
         Added the constraints for entity Manager.
     -->
-    <changeSet id="20221128063459-2" author="jhipster">
+    <changeSet id="20221128063459-2" author="jose">
 
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="manager"
                                  constraintName="fk_manager__user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="happy_user"/>
+
+        <addUniqueConstraint columnNames="document_number"
+                             constraintName="uk_manager"
+                             tableName="manager"/>
     </changeSet>
 </databaseChangeLog>
