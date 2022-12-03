@@ -57,7 +57,7 @@ public class Customer implements Serializable {
 
     @OneToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     @OneToMany(mappedBy = "customer")
@@ -67,6 +67,7 @@ public class Customer implements Serializable {
     @ManyToOne(optional = false)
     @NotNull
     @JsonIgnoreProperties(value = { "customers" }, allowSetters = true)
+    @JoinColumn(name = "document_type_id", nullable = false)
     private DocumentType documentType;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
