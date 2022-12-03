@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity Product.
     -->
-    <changeSet id="20221128063059-2" author="jhipster">
+    <changeSet id="20221128063059-2" author="jose">
 
         <addForeignKeyConstraint baseColumnNames="inventory_id"
                                  baseTableName="product"
