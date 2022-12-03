@@ -11,6 +11,7 @@ import com.happyfood.IntegrationTest;
 import com.happyfood.domain.Customer;
 import com.happyfood.domain.Order;
 import com.happyfood.repository.OrderRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.OrderService;
 import com.happyfood.service.dto.OrderDTO;
 import com.happyfood.service.mapper.OrderMapper;
@@ -42,7 +43,9 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(
+    authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE, AuthoritiesConstants.USER }
+)
 class OrderResourceIT {
 
     private static final String DEFAULT_ORDER_REQUIRED = "AAAAAAAAAA";
