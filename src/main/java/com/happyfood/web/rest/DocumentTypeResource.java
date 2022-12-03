@@ -1,6 +1,7 @@
 package com.happyfood.web.rest;
 
 import com.happyfood.repository.DocumentTypeRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.DocumentTypeService;
 import com.happyfood.service.dto.DocumentTypeDTO;
 import com.happyfood.web.rest.errors.BadRequestAlertException;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
@@ -56,6 +58,7 @@ public class DocumentTypeResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/document-types")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<DocumentTypeDTO> createDocumentType(@Valid @RequestBody DocumentTypeDTO documentTypeDTO)
         throws URISyntaxException {
         log.debug("REST request to save DocumentType : {}", documentTypeDTO);
@@ -80,6 +83,7 @@ public class DocumentTypeResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/document-types/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<DocumentTypeDTO> updateDocumentType(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody DocumentTypeDTO documentTypeDTO
@@ -115,6 +119,7 @@ public class DocumentTypeResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/document-types/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<DocumentTypeDTO> partialUpdateDocumentType(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody DocumentTypeDTO documentTypeDTO
@@ -146,6 +151,7 @@ public class DocumentTypeResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of documentTypes in body.
      */
     @GetMapping("/document-types")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<List<DocumentTypeDTO>> getAllDocumentTypes(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of DocumentTypes");
         Page<DocumentTypeDTO> page = documentTypeService.findAll(pageable);
@@ -160,6 +166,7 @@ public class DocumentTypeResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the documentTypeDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/document-types/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<DocumentTypeDTO> getDocumentType(@PathVariable Long id) {
         log.debug("REST request to get DocumentType : {}", id);
         Optional<DocumentTypeDTO> documentTypeDTO = documentTypeService.findOne(id);
@@ -173,6 +180,7 @@ public class DocumentTypeResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/document-types/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<Void> deleteDocumentType(@PathVariable Long id) {
         log.debug("REST request to delete DocumentType : {}", id);
         documentTypeService.delete(id);

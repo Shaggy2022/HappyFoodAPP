@@ -9,6 +9,7 @@ import com.happyfood.IntegrationTest;
 import com.happyfood.domain.DocumentType;
 import com.happyfood.domain.enumeration.State;
 import com.happyfood.repository.DocumentTypeRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.dto.DocumentTypeDTO;
 import com.happyfood.service.mapper.DocumentTypeMapper;
 import java.util.List;
@@ -29,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @IntegrationTest
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER })
 class DocumentTypeResourceIT {
 
     private static final String DEFAULT_INITIALS = "AAAAAAAAAA";
