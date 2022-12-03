@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity Employee.
     -->
-    <changeSet id="20221128063559-2" author="jhipster">
+    <changeSet id="20221128063559-2" author="jose">
 
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="employee"
@@ -25,5 +25,9 @@
                                  constraintName="fk_employee__manager_id"
                                  referencedColumnNames="id"
                                  referencedTableName="manager"/>
+
+        <addUniqueConstraint columnNames="document_number"
+                             constraintName="uk_employee"
+                             tableName="employee"/>
     </changeSet>
 </databaseChangeLog>
