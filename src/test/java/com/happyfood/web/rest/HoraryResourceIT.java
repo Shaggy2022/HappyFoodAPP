@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.happyfood.IntegrationTest;
 import com.happyfood.domain.Horary;
 import com.happyfood.repository.HoraryRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.dto.HoraryDTO;
 import com.happyfood.service.mapper.HoraryMapper;
 import java.util.List;
@@ -28,7 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @IntegrationTest
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE })
 class HoraryResourceIT {
 
     private static final String DEFAULT_START_TIME = "AAAAAAAAAA";
