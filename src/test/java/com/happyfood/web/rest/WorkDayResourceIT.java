@@ -10,6 +10,7 @@ import com.happyfood.domain.Horary;
 import com.happyfood.domain.WorkDay;
 import com.happyfood.domain.enumeration.State;
 import com.happyfood.repository.WorkDayRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.dto.WorkDayDTO;
 import com.happyfood.service.mapper.WorkDayMapper;
 import java.util.List;
@@ -30,7 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @IntegrationTest
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE })
 class WorkDayResourceIT {
 
     private static final String DEFAULT_DAY_NAME = "AAAAAAAAAA";

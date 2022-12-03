@@ -1,6 +1,7 @@
 package com.happyfood.web.rest;
 
 import com.happyfood.repository.WorkDayRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.WorkDayService;
 import com.happyfood.service.dto.WorkDayDTO;
 import com.happyfood.web.rest.errors.BadRequestAlertException;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
@@ -56,6 +58,7 @@ public class WorkDayResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/work-days")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<WorkDayDTO> createWorkDay(@Valid @RequestBody WorkDayDTO workDayDTO) throws URISyntaxException {
         log.debug("REST request to save WorkDay : {}", workDayDTO);
         if (workDayDTO.getId() != null) {
@@ -79,6 +82,7 @@ public class WorkDayResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/work-days/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<WorkDayDTO> updateWorkDay(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody WorkDayDTO workDayDTO
@@ -114,6 +118,7 @@ public class WorkDayResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/work-days/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<WorkDayDTO> partialUpdateWorkDay(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody WorkDayDTO workDayDTO
@@ -145,6 +150,15 @@ public class WorkDayResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of workDays in body.
      */
     @GetMapping("/work-days")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<List<WorkDayDTO>> getAllWorkDays(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of WorkDays");
         Page<WorkDayDTO> page = workDayService.findAll(pageable);
@@ -159,6 +173,15 @@ public class WorkDayResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the workDayDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/work-days/{id}")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<WorkDayDTO> getWorkDay(@PathVariable Long id) {
         log.debug("REST request to get WorkDay : {}", id);
         Optional<WorkDayDTO> workDayDTO = workDayService.findOne(id);
@@ -172,6 +195,7 @@ public class WorkDayResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/work-days/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<Void> deleteWorkDay(@PathVariable Long id) {
         log.debug("REST request to delete WorkDay : {}", id);
         workDayService.delete(id);
