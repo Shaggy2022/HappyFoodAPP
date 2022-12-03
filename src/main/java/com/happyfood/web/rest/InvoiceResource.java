@@ -1,6 +1,7 @@
 package com.happyfood.web.rest;
 
 import com.happyfood.repository.InvoiceRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.InvoiceService;
 import com.happyfood.service.dto.InvoiceDTO;
 import com.happyfood.web.rest.errors.BadRequestAlertException;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
@@ -56,6 +58,15 @@ public class InvoiceResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/invoices")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<InvoiceDTO> createInvoice(@Valid @RequestBody InvoiceDTO invoiceDTO) throws URISyntaxException {
         log.debug("REST request to save Invoice : {}", invoiceDTO);
         if (invoiceDTO.getId() != null) {
@@ -79,6 +90,15 @@ public class InvoiceResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/invoices/{id}")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<InvoiceDTO> updateInvoice(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody InvoiceDTO invoiceDTO
@@ -114,6 +134,15 @@ public class InvoiceResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/invoices/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<InvoiceDTO> partialUpdateInvoice(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody InvoiceDTO invoiceDTO
@@ -146,6 +175,17 @@ public class InvoiceResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoices in body.
      */
     @GetMapping("/invoices")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
+        "\")"
+    )
     public ResponseEntity<List<InvoiceDTO>> getAllInvoices(
         @org.springdoc.api.annotations.ParameterObject Pageable pageable,
         @RequestParam(required = false, defaultValue = "true") boolean eagerload
@@ -168,6 +208,17 @@ public class InvoiceResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the invoiceDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/invoices/{id}")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
+        "\")"
+    )
     public ResponseEntity<InvoiceDTO> getInvoice(@PathVariable Long id) {
         log.debug("REST request to get Invoice : {}", id);
         Optional<InvoiceDTO> invoiceDTO = invoiceService.findOne(id);
@@ -181,6 +232,15 @@ public class InvoiceResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/invoices/{id}")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<Void> deleteInvoice(@PathVariable Long id) {
         log.debug("REST request to delete Invoice : {}", id);
         invoiceService.delete(id);

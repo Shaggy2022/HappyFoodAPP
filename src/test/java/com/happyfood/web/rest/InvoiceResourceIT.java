@@ -10,6 +10,7 @@ import com.happyfood.IntegrationTest;
 import com.happyfood.domain.Invoice;
 import com.happyfood.domain.Order;
 import com.happyfood.repository.InvoiceRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.InvoiceService;
 import com.happyfood.service.dto.InvoiceDTO;
 import com.happyfood.service.mapper.InvoiceMapper;
@@ -38,7 +39,9 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(
+    authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE, AuthoritiesConstants.USER }
+)
 class InvoiceResourceIT {
 
     private static final Integer DEFAULT_INVOICE_NUMBER = 1;
