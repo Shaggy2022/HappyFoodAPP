@@ -11,6 +11,7 @@ import com.happyfood.domain.Invoice;
 import com.happyfood.domain.InvoiceProduct;
 import com.happyfood.domain.Product;
 import com.happyfood.repository.InvoiceProductRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.InvoiceProductService;
 import com.happyfood.service.dto.InvoiceProductDTO;
 import com.happyfood.service.mapper.InvoiceProductMapper;
@@ -41,7 +42,7 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE })
 class InvoiceProductResourceIT {
 
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);

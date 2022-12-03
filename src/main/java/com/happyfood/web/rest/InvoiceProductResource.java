@@ -1,6 +1,7 @@
 package com.happyfood.web.rest;
 
 import com.happyfood.repository.InvoiceProductRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.InvoiceProductService;
 import com.happyfood.service.dto.InvoiceProductDTO;
 import com.happyfood.web.rest.errors.BadRequestAlertException;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
@@ -56,6 +58,7 @@ public class InvoiceProductResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/invoice-products")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<InvoiceProductDTO> createInvoiceProduct(@Valid @RequestBody InvoiceProductDTO invoiceProductDTO)
         throws URISyntaxException {
         log.debug("REST request to save InvoiceProduct : {}", invoiceProductDTO);
@@ -80,6 +83,7 @@ public class InvoiceProductResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/invoice-products/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<InvoiceProductDTO> updateInvoiceProduct(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody InvoiceProductDTO invoiceProductDTO
@@ -115,6 +119,7 @@ public class InvoiceProductResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/invoice-products/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<InvoiceProductDTO> partialUpdateInvoiceProduct(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody InvoiceProductDTO invoiceProductDTO
@@ -147,6 +152,15 @@ public class InvoiceProductResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoiceProducts in body.
      */
     @GetMapping("/invoice-products")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<List<InvoiceProductDTO>> getAllInvoiceProducts(
         @org.springdoc.api.annotations.ParameterObject Pageable pageable,
         @RequestParam(required = false, defaultValue = "true") boolean eagerload
@@ -169,6 +183,15 @@ public class InvoiceProductResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the invoiceProductDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/invoice-products/{id}")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<InvoiceProductDTO> getInvoiceProduct(@PathVariable Long id) {
         log.debug("REST request to get InvoiceProduct : {}", id);
         Optional<InvoiceProductDTO> invoiceProductDTO = invoiceProductService.findOne(id);
@@ -182,6 +205,7 @@ public class InvoiceProductResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/invoice-products/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<Void> deleteInvoiceProduct(@PathVariable Long id) {
         log.debug("REST request to delete InvoiceProduct : {}", id);
         invoiceProductService.delete(id);
