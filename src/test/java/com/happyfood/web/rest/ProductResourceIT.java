@@ -11,6 +11,7 @@ import com.happyfood.IntegrationTest;
 import com.happyfood.domain.Inventory;
 import com.happyfood.domain.Product;
 import com.happyfood.repository.ProductRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.ProductService;
 import com.happyfood.service.dto.ProductDTO;
 import com.happyfood.service.mapper.ProductMapper;
@@ -40,7 +41,9 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(
+    authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE, AuthoritiesConstants.USER }
+)
 class ProductResourceIT {
 
     private static final String DEFAULT_SERIAL = "AAAAAAAAAA";
