@@ -11,6 +11,7 @@ import com.happyfood.IntegrationTest;
 import com.happyfood.domain.Inventory;
 import com.happyfood.domain.Invoice;
 import com.happyfood.repository.InventoryRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.InventoryService;
 import com.happyfood.service.dto.InventoryDTO;
 import com.happyfood.service.mapper.InventoryMapper;
@@ -40,7 +41,7 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE })
 class InventoryResourceIT {
 
     private static final Integer DEFAULT_AMOUNT = 1;
