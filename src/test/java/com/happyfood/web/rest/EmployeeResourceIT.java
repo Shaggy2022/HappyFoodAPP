@@ -13,6 +13,7 @@ import com.happyfood.domain.User;
 import com.happyfood.domain.WorkDay;
 import com.happyfood.domain.enumeration.State;
 import com.happyfood.repository.EmployeeRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.EmployeeService;
 import com.happyfood.service.dto.EmployeeDTO;
 import com.happyfood.service.mapper.EmployeeMapper;
@@ -41,7 +42,9 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(
+    authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.USER, AuthoritiesConstants.EMPLOYEE }
+)
 class EmployeeResourceIT {
 
     private static final String DEFAULT_DOCUMENT_NUMBER = "AAAAAAAAAA";
