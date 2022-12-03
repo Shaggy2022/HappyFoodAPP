@@ -151,7 +151,15 @@ public class DocumentTypeResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of documentTypes in body.
      */
     @GetMapping("/document-types")
-    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<List<DocumentTypeDTO>> getAllDocumentTypes(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of DocumentTypes");
         Page<DocumentTypeDTO> page = documentTypeService.findAll(pageable);
@@ -166,7 +174,15 @@ public class DocumentTypeResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the documentTypeDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/document-types/{id}")
-    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<DocumentTypeDTO> getDocumentType(@PathVariable Long id) {
         log.debug("REST request to get DocumentType : {}", id);
         Optional<DocumentTypeDTO> documentTypeDTO = documentTypeService.findOne(id);

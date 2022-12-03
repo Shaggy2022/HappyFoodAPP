@@ -11,6 +11,7 @@ import com.happyfood.domain.Customer;
 import com.happyfood.domain.DocumentType;
 import com.happyfood.domain.User;
 import com.happyfood.repository.CustomerRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.CustomerService;
 import com.happyfood.service.dto.CustomerDTO;
 import com.happyfood.service.mapper.CustomerMapper;
@@ -39,7 +40,9 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(
+    authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.USER, AuthoritiesConstants.EMPLOYEE }
+)
 class CustomerResourceIT {
 
     private static final String DEFAULT_FIRST_NAME = "AAAAAAAAAA";
