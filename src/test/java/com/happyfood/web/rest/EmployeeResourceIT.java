@@ -42,9 +42,7 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser(
-    authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.USER, AuthoritiesConstants.EMPLOYEE }
-)
+@WithMockUser(authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE })
 class EmployeeResourceIT {
 
     private static final String DEFAULT_DOCUMENT_NUMBER = "AAAAAAAAAA";

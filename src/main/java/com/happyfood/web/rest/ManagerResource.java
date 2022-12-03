@@ -1,6 +1,7 @@
 package com.happyfood.web.rest;
 
 import com.happyfood.repository.ManagerRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.ManagerService;
 import com.happyfood.service.dto.ManagerDTO;
 import com.happyfood.web.rest.errors.BadRequestAlertException;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
@@ -56,6 +58,7 @@ public class ManagerResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/managers")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<ManagerDTO> createManager(@Valid @RequestBody ManagerDTO managerDTO) throws URISyntaxException {
         log.debug("REST request to save Manager : {}", managerDTO);
         if (managerDTO.getId() != null) {
@@ -79,6 +82,7 @@ public class ManagerResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/managers/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<ManagerDTO> updateManager(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody ManagerDTO managerDTO
@@ -114,6 +118,7 @@ public class ManagerResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/managers/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<ManagerDTO> partialUpdateManager(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody ManagerDTO managerDTO
@@ -146,6 +151,15 @@ public class ManagerResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of managers in body.
      */
     @GetMapping("/managers")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<List<ManagerDTO>> getAllManagers(
         @org.springdoc.api.annotations.ParameterObject Pageable pageable,
         @RequestParam(required = false, defaultValue = "true") boolean eagerload
@@ -168,6 +182,15 @@ public class ManagerResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the managerDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/managers/{id}")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<ManagerDTO> getManager(@PathVariable Long id) {
         log.debug("REST request to get Manager : {}", id);
         Optional<ManagerDTO> managerDTO = managerService.findOne(id);
@@ -181,6 +204,7 @@ public class ManagerResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/managers/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
     public ResponseEntity<Void> deleteManager(@PathVariable Long id) {
         log.debug("REST request to delete Manager : {}", id);
         managerService.delete(id);

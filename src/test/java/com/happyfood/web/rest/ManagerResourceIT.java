@@ -10,6 +10,7 @@ import com.happyfood.IntegrationTest;
 import com.happyfood.domain.Manager;
 import com.happyfood.domain.User;
 import com.happyfood.repository.ManagerRepository;
+import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.ManagerService;
 import com.happyfood.service.dto.ManagerDTO;
 import com.happyfood.service.mapper.ManagerMapper;
@@ -38,7 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(authorities = { AuthoritiesConstants.ADMIN, AuthoritiesConstants.MANAGER, AuthoritiesConstants.EMPLOYEE })
 class ManagerResourceIT {
 
     private static final String DEFAULT_DOCUMENT_NUMBER = "AAAAAAAAAA";
