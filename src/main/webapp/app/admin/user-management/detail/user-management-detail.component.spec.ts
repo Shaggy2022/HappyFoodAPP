@@ -18,7 +18,7 @@ describe('User Management Detail Component', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            data: of({ user: new User(123, 'user', 'first', 'last', 'first@last.com', true, 'en', [Authority.USER], 'admin') }),
+            data: of({ user: new User(123, 'user', 'first@last.com', true, 'en', [Authority.USER], 'admin') }),
           },
         },
       ],
@@ -42,8 +42,6 @@ describe('User Management Detail Component', () => {
         expect.objectContaining({
           id: 123,
           login: 'user',
-          firstName: 'first',
-          lastName: 'last',
           email: 'first@last.com',
           activated: true,
           langKey: 'en',

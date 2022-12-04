@@ -74,8 +74,6 @@ export class UserManagementUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: user.id,
       login: user.login,
-      firstName: user.firstName,
-      lastName: user.lastName,
       email: user.email,
       activated: user.activated,
       langKey: user.langKey,
@@ -85,8 +83,6 @@ export class UserManagementUpdateComponent implements OnInit {
 
   private updateUser(user: User): void {
     user.login = this.editForm.get(['login'])!.value;
-    user.firstName = this.editForm.get(['firstName'])!.value;
-    user.lastName = this.editForm.get(['lastName'])!.value;
     user.email = this.editForm.get(['email'])!.value;
     user.activated = this.editForm.get(['activated'])!.value;
     user.langKey = this.editForm.get(['langKey'])!.value;

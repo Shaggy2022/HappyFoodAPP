@@ -19,9 +19,7 @@ describe('Home Component', () => {
     activated: true,
     authorities: [],
     email: '',
-    firstName: null,
     langKey: '',
-    lastName: null,
     login: 'login',
     imageUrl: null,
   };

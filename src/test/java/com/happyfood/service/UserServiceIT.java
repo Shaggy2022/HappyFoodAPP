@@ -36,10 +36,6 @@ class UserServiceIT {
 
     private static final String DEFAULT_EMAIL = "johndoe@localhost";
 
-    private static final String DEFAULT_FIRSTNAME = "john";
-
-    private static final String DEFAULT_LASTNAME = "doe";
-
     private static final String DEFAULT_IMAGEURL = "http://placehold.it/50x50";
 
     private static final String DEFAULT_LANGKEY = "dummy";

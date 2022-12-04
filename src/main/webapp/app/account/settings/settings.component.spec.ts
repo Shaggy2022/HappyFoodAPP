@@ -16,8 +16,6 @@ describe('SettingsComponent', () => {
   let fixture: ComponentFixture<SettingsComponent>;
   let mockAccountService: AccountService;
   const account: Account = {
-    firstName: 'John',
-    lastName: 'Doe',
     activated: true,
     email: 'john.doe@mail.com',
     langKey: 'es',
@@ -48,8 +46,6 @@ describe('SettingsComponent', () => {
     // GIVEN
     mockAccountService.save = jest.fn(() => of({}));
     const settingsFormValues = {
-      firstName: 'John',
-      lastName: 'Doe',
       email: 'john.doe@mail.com',
       langKey: 'es',
     };

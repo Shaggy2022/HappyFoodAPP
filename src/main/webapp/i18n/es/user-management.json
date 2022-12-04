@@ -16,8 +16,6 @@
       "title": "Usuario"
     },
     "login": "Logeo",
-    "firstName": "Nombre",
-    "lastName": "Apellidos",
     "email": "Correo Electrónico",
     "activated": "Activado",
     "deactivated": "Desactivado",
