@@ -9,6 +9,10 @@
       "500": "Internal server error."
     },
     "concurrencyFailure": "Another user modified this data at the same time as you. Your changes were rejected.",
-    "validation": "Validation error on the server."
+    "validation": "Validation error on the server.",
+    "initialsExists": "A document type already exists with those initials.",
+    "documentNameExists": "A document type already exists with those name.",
+    "DocumentTypeAndDocumentNumberExists": "A customer with the same type and document number already exists.",
+    "DocumentNumberExists": "There is already a customer with the same document number."
   }
 }

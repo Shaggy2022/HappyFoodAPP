@@ -9,6 +9,10 @@
       "500": "Error interno del servidor."
     },
     "concurrencyFailure": "Otro usuario ha modificado estos datos al mismo tiempo que tú. Tus cambios fueron rechazados.",
-    "validation": "Error de validación en el servidor."
+    "validation": "Error de validación en el servidor.",
+    "initialsExists": "Ya existe un tipo de documento con esas siglas.",
+    "documentNameExists": "Ya existe un tipo de documento con ese nombre.",
+    "DocumentTypeAndDocumentNumberExists": "Ya existe un cliente con el mismo tipo y número de documento.",
+    "DocumentNumberExists": "Ya existe un cliente con el mismo número de documento."
   }
 }
