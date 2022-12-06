@@ -5,6 +5,7 @@ import com.happyfood.repository.DocumentTypeRepository;
 import com.happyfood.service.DocumentTypeService;
 import com.happyfood.service.dto.DocumentTypeDTO;
 import com.happyfood.service.mapper.DocumentTypeMapper;
+import com.happyfood.web.rest.errors.BadRequestAlertException;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

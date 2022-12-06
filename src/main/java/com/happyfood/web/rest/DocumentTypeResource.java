@@ -1,5 +1,6 @@
 package com.happyfood.web.rest;
 
+import com.happyfood.domain.DocumentType;
 import com.happyfood.repository.DocumentTypeRepository;
 import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.DocumentTypeService;
@@ -64,6 +65,10 @@ public class DocumentTypeResource {
         log.debug("REST request to save DocumentType : {}", documentTypeDTO);
         if (documentTypeDTO.getId() != null) {
             throw new BadRequestAlertException("A new documentType cannot already have an ID", ENTITY_NAME, "idexists");
+        } else if (documentTypeRepository.findByInitials(documentTypeDTO.getInitials()).isPresent()) {
+            throw new BadRequestAlertException("A document type already exists with those initials", ENTITY_NAME, "initialsExists");
+        } else if (documentTypeRepository.findByDocumentName(documentTypeDTO.getDocumentName()).isPresent()) {
+            throw new BadRequestAlertException("A document type already exists with those name", ENTITY_NAME, "documentNameExists");
         }
         DocumentTypeDTO result = documentTypeService.save(documentTypeDTO);
         return ResponseEntity
