@@ -42,7 +42,15 @@ public class PublicUserResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body all users.
      */
     @GetMapping("/users")
-    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public ResponseEntity<List<UserDTO>> getAllPublicUsers(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get all public User names");
         if (!onlyContainsAllowedProperties(pageable)) {
@@ -63,7 +71,15 @@ public class PublicUserResource {
      * @return a string list of all roles.
      */
     @GetMapping("/authorities")
-    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") or hasAuthority(\"" + AuthoritiesConstants.MANAGER + "\")")
+    @PreAuthorize(
+        "hasAuthority(\"" +
+        AuthoritiesConstants.ADMIN +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.MANAGER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.EMPLOYEE +
+        "\")"
+    )
     public List<String> getAuthorities() {
         return userService.getAuthorities();
     }
