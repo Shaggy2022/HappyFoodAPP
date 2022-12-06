@@ -1,5 +1,6 @@
 package com.happyfood.repository;
 
+import com.happyfood.domain.Customer;
 import com.happyfood.domain.DocumentType;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.*;

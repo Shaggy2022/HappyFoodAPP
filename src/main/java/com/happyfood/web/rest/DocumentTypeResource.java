@@ -103,8 +103,11 @@ public class DocumentTypeResource {
 
         if (!documentTypeRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        } else if (documentTypeRepository.findByInitials(documentTypeDTO.getInitials()).isPresent()) {
+            throw new BadRequestAlertException("A document type already exists with those initials", ENTITY_NAME, "initialsExists");
+        } else if (documentTypeRepository.findByDocumentName(documentTypeDTO.getDocumentName()).isPresent()) {
+            throw new BadRequestAlertException("A document type already exists with those name", ENTITY_NAME, "documentNameExists");
         }
-
         DocumentTypeDTO result = documentTypeService.update(documentTypeDTO);
         return ResponseEntity
             .ok()
