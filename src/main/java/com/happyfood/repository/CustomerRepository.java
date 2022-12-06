@@ -1,6 +1,7 @@
 package com.happyfood.repository;
 
 import com.happyfood.domain.Customer;
+import com.happyfood.domain.DocumentType;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -39,4 +40,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
         "select customer from Customer customer left join fetch customer.user left join fetch customer.documentType where customer.id =:id"
     )
     Optional<Customer> findOneWithToOneRelationships(@Param("id") Long id);
+
+    Optional<Customer> findByDocumentNumberAndDocumentType(String documentNumber, DocumentType documentType);
+    Optional<Customer> findByDocumentNumber(String documentNumber);
 }

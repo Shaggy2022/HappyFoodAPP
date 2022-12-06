@@ -1,6 +1,8 @@
 package com.happyfood.web.rest;
 
+import com.happyfood.domain.DocumentType;
 import com.happyfood.repository.CustomerRepository;
+import com.happyfood.repository.DocumentTypeRepository;
 import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.CustomerService;
 import com.happyfood.service.dto.CustomerDTO;
@@ -10,6 +12,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.print.Doc;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
@@ -43,10 +46,17 @@ public class CustomerResource {
 
     private final CustomerService customerService;
 
+    private final DocumentTypeRepository documentTypeRepository;
+
     private final CustomerRepository customerRepository;
 
-    public CustomerResource(CustomerService customerService, CustomerRepository customerRepository) {
+    public CustomerResource(
+        CustomerService customerService,
+        DocumentTypeRepository documentTypeRepository,
+        CustomerRepository customerRepository
+    ) {
         this.customerService = customerService;
+        this.documentTypeRepository = documentTypeRepository;
         this.customerRepository = customerRepository;
     }
 
@@ -69,8 +79,25 @@ public class CustomerResource {
     )
     public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) throws URISyntaxException {
         log.debug("REST request to save Customer : {}", customerDTO);
+        Optional<DocumentType> documentTypeOptional = documentTypeRepository.findById(customerDTO.getDocumentType().getId());
         if (customerDTO.getId() != null) {
             throw new BadRequestAlertException("A new customer cannot already have an ID", ENTITY_NAME, "idexists");
+        } else if (documentTypeOptional.isEmpty()) {
+            throw new BadRequestAlertException("The document type doesnot Exist", ENTITY_NAME, "DocumentTypeDoesNotExists");
+        } else if (
+            customerRepository.findByDocumentNumberAndDocumentType(customerDTO.getDocumentNumber(), documentTypeOptional.get()).isPresent()
+        ) {
+            throw new BadRequestAlertException(
+                "A customer with the same type and document number already exists.",
+                ENTITY_NAME,
+                "DocumentTypeAndDocumentNumberExists"
+            );
+        } else if (customerRepository.findByDocumentNumber(customerDTO.getDocumentNumber()).isPresent()) {
+            throw new BadRequestAlertException(
+                "There is already a customer with the same document number.",
+                ENTITY_NAME,
+                "DocumentNumberExists"
+            );
         }
         CustomerDTO result = customerService.save(customerDTO);
         return ResponseEntity
@@ -104,6 +131,7 @@ public class CustomerResource {
         @Valid @RequestBody CustomerDTO customerDTO
     ) throws URISyntaxException {
         log.debug("REST request to update Customer : {}, {}", id, customerDTO);
+        Optional<DocumentType> documentTypeOptional = documentTypeRepository.findById(customerDTO.getDocumentType().getId());
         if (customerDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,6 +141,22 @@ public class CustomerResource {
 
         if (!customerRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        } else if (documentTypeOptional.isEmpty()) {
+            throw new BadRequestAlertException("The document type doesnot Exist", ENTITY_NAME, "DocumentTypeDoesNotExists");
+        } else if (
+            customerRepository.findByDocumentNumberAndDocumentType(customerDTO.getDocumentNumber(), documentTypeOptional.get()).isPresent()
+        ) {
+            throw new BadRequestAlertException(
+                "A customer with the same type and document number already exists.",
+                ENTITY_NAME,
+                "DocumentTypeAndDocumentNumberExists"
+            );
+        } else if (customerRepository.findByDocumentNumber(customerDTO.getDocumentNumber()).isPresent()) {
+            throw new BadRequestAlertException(
+                "There is already a customer with the same document number.",
+                ENTITY_NAME,
+                "DocumentNumberExists"
+            );
         }
 
         CustomerDTO result = customerService.update(customerDTO);
