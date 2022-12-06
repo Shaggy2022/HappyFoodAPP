@@ -184,6 +184,8 @@ public class ProductResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<List<ProductDTO>> getAllProducts(
@@ -217,6 +219,8 @@ public class ProductResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {

@@ -157,6 +157,8 @@ public class HoraryResource {
         AuthoritiesConstants.MANAGER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
         "\")"
     )
     public ResponseEntity<List<HoraryDTO>> getAllHoraries(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
@@ -180,6 +182,8 @@ public class HoraryResource {
         AuthoritiesConstants.MANAGER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
         "\")"
     )
     public ResponseEntity<HoraryDTO> getHorary(@PathVariable Long id) {

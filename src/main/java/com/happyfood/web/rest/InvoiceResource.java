@@ -184,6 +184,8 @@ public class InvoiceResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<List<InvoiceDTO>> getAllInvoices(
@@ -217,6 +219,8 @@ public class InvoiceResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<InvoiceDTO> getInvoice(@PathVariable Long id) {

@@ -182,6 +182,8 @@ public class InventoryResource {
         AuthoritiesConstants.MANAGER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
         "\")"
     )
     public ResponseEntity<List<InventoryDTO>> getAllInventories(
@@ -213,6 +215,8 @@ public class InventoryResource {
         AuthoritiesConstants.MANAGER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
         "\")"
     )
     public ResponseEntity<InventoryDTO> getInventory(@PathVariable Long id) {

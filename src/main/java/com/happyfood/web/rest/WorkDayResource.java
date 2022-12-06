@@ -157,6 +157,8 @@ public class WorkDayResource {
         AuthoritiesConstants.MANAGER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
         "\")"
     )
     public ResponseEntity<List<WorkDayDTO>> getAllWorkDays(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
@@ -180,6 +182,8 @@ public class WorkDayResource {
         AuthoritiesConstants.MANAGER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
         "\")"
     )
     public ResponseEntity<WorkDayDTO> getWorkDay(@PathVariable Long id) {

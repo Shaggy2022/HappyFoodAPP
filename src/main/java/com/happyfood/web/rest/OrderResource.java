@@ -67,6 +67,8 @@ public class OrderResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<OrderDTO> createOrder(@Valid @RequestBody OrderDTO orderDTO) throws URISyntaxException {
@@ -101,6 +103,8 @@ public class OrderResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<OrderDTO> updateOrder(
@@ -147,6 +151,8 @@ public class OrderResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<OrderDTO> partialUpdateOrder(
@@ -190,6 +196,8 @@ public class OrderResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<List<OrderDTO>> getAllOrders(
@@ -223,6 +231,8 @@ public class OrderResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<OrderDTO> getOrder(@PathVariable Long id) {
@@ -247,6 +257,8 @@ public class OrderResource {
         AuthoritiesConstants.EMPLOYEE +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.USER +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {

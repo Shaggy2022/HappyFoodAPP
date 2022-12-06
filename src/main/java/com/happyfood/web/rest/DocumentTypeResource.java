@@ -158,6 +158,8 @@ public class DocumentTypeResource {
         AuthoritiesConstants.MANAGER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
         "\")"
     )
     public ResponseEntity<List<DocumentTypeDTO>> getAllDocumentTypes(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
@@ -181,6 +183,8 @@ public class DocumentTypeResource {
         AuthoritiesConstants.MANAGER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.USER +
         "\")"
     )
     public ResponseEntity<DocumentTypeDTO> getDocumentType(@PathVariable Long id) {

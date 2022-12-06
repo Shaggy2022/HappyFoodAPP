@@ -184,6 +184,8 @@ public class CustomerResource {
         AuthoritiesConstants.USER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<List<CustomerDTO>> getAllCustomers(
@@ -217,6 +219,8 @@ public class CustomerResource {
         AuthoritiesConstants.USER +
         "\") or hasAuthority(\"" +
         AuthoritiesConstants.EMPLOYEE +
+        "\") or hasAuthority(\"" +
+        AuthoritiesConstants.CUSTOMER +
         "\")"
     )
     public ResponseEntity<CustomerDTO> getCustomer(@PathVariable Long id) {

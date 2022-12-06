@@ -3,3 +3,4 @@ id;login;password_hash;email;image_url;activated;lang_key;created_by;last_modifi
 2;user;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;user@localhost;;true;es;system;system
 3;employee;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;employee@localhost;;true;es;system;system
 4;manager;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;manager@localhost;;true;es;system;system
+5;customer;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;customer@localhost;;true;es;system;system
