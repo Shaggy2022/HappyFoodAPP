@@ -13,6 +13,7 @@
     "initialsExists": "Ya existe un tipo de documento con esas siglas.",
     "documentNameExists": "Ya existe un tipo de documento con ese nombre.",
     "DocumentTypeAndDocumentNumberExists": "Ya existe un cliente con el mismo tipo y número de documento.",
-    "DocumentNumberExists": "Ya existe un cliente con el mismo número de documento."
+    "DocumentNumberExists": "Ya existe un cliente con el mismo número de documento.",
+    "InvoiceNumberExists": "ya hay una factura con el mismo número de factura."
   }
 }

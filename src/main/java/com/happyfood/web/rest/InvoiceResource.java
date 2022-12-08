@@ -1,5 +1,7 @@
 package com.happyfood.web.rest;
 
+import com.happyfood.domain.DocumentType;
+import com.happyfood.domain.Invoice;
 import com.happyfood.repository.InvoiceRepository;
 import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.InvoiceService;
@@ -71,6 +73,12 @@ public class InvoiceResource {
         log.debug("REST request to save Invoice : {}", invoiceDTO);
         if (invoiceDTO.getId() != null) {
             throw new BadRequestAlertException("A new invoice cannot already have an ID", ENTITY_NAME, "idexists");
+        } else if (invoiceRepository.findByInvoiceNumber(invoiceDTO.getInvoiceNumber()).isPresent()) {
+            throw new BadRequestAlertException(
+                "There is already an invoice with the same invoice number.",
+                ENTITY_NAME,
+                "InvoiceNumberExists"
+            );
         }
         InvoiceDTO result = invoiceService.save(invoiceDTO);
         return ResponseEntity
@@ -114,7 +122,6 @@ public class InvoiceResource {
         if (!invoiceRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
-
         InvoiceDTO result = invoiceService.update(invoiceDTO);
         return ResponseEntity
             .ok()
@@ -157,8 +164,13 @@ public class InvoiceResource {
 
         if (!invoiceRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        } else if (invoiceRepository.findByInvoiceNumber(invoiceDTO.getInvoiceNumber()).isPresent()) {
+            throw new BadRequestAlertException(
+                "There is already an invoice with the same invoice number.",
+                ENTITY_NAME,
+                "InvoiceNumberExists"
+            );
         }
-
         Optional<InvoiceDTO> result = invoiceService.partialUpdate(invoiceDTO);
 
         return ResponseUtil.wrapOrNotFound(

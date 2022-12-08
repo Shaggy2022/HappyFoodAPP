@@ -13,6 +13,7 @@
     "initialsExists": "A document type already exists with those initials.",
     "documentNameExists": "A document type already exists with those name.",
     "DocumentTypeAndDocumentNumberExists": "A customer with the same type and document number already exists.",
-    "DocumentNumberExists": "There is already a customer with the same document number."
+    "DocumentNumberExists": "There is already a customer with the same document number.",
+    "InvoiceNumberExists": "there is already an invoice with the same invoice number."
   }
 }

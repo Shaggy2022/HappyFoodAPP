@@ -94,8 +94,22 @@ public class DocumentTypeResource {
         @Valid @RequestBody DocumentTypeDTO documentTypeDTO
     ) throws URISyntaxException {
         log.debug("REST request to update DocumentType : {}, {}", id, documentTypeDTO);
+        Optional<DocumentType> documentTypeOptionalInitials = documentTypeRepository.findByInitials(documentTypeDTO.getInitials());
+        Optional<DocumentType> documentTypeOptionalName = documentTypeRepository.findByDocumentName(documentTypeDTO.getDocumentName());
         if (documentTypeDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        } else if (documentTypeOptionalInitials.isPresent()) {
+            if (documentTypeOptionalInitials.get().getId() != documentTypeDTO.getId()) throw new BadRequestAlertException(
+                "A document type already exists with these initials",
+                ENTITY_NAME,
+                "initialsExists"
+            );
+        } else if (documentTypeOptionalName.isPresent()) {
+            if (documentTypeOptionalName.get().getId() != documentTypeDTO.getId()) throw new BadRequestAlertException(
+                "A document type already exists with these name",
+                ENTITY_NAME,
+                "documentNameExists"
+            );
         }
         if (!Objects.equals(id, documentTypeDTO.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
@@ -103,10 +117,6 @@ public class DocumentTypeResource {
 
         if (!documentTypeRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
-        } else if (documentTypeRepository.findByInitials(documentTypeDTO.getInitials()).isPresent()) {
-            throw new BadRequestAlertException("A document type already exists with those initials", ENTITY_NAME, "initialsExists");
-        } else if (documentTypeRepository.findByDocumentName(documentTypeDTO.getDocumentName()).isPresent()) {
-            throw new BadRequestAlertException("A document type already exists with those name", ENTITY_NAME, "documentNameExists");
         }
         DocumentTypeDTO result = documentTypeService.update(documentTypeDTO);
         return ResponseEntity
@@ -133,8 +143,22 @@ public class DocumentTypeResource {
         @NotNull @RequestBody DocumentTypeDTO documentTypeDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update DocumentType partially : {}, {}", id, documentTypeDTO);
+        Optional<DocumentType> documentTypeOptionalInitials = documentTypeRepository.findByInitials(documentTypeDTO.getInitials());
+        Optional<DocumentType> documentTypeOptionalName = documentTypeRepository.findByDocumentName(documentTypeDTO.getDocumentName());
         if (documentTypeDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        } else if (documentTypeOptionalInitials.isPresent()) {
+            if (documentTypeOptionalInitials.get().getId() != documentTypeDTO.getId()) throw new BadRequestAlertException(
+                "A document type already exists with these initials",
+                ENTITY_NAME,
+                "initialsExists"
+            );
+        } else if (documentTypeOptionalName.isPresent()) {
+            if (documentTypeOptionalName.get().getId() != documentTypeDTO.getId()) throw new BadRequestAlertException(
+                "A document type already exists with these name",
+                ENTITY_NAME,
+                "documentNameExists"
+            );
         }
         if (!Objects.equals(id, documentTypeDTO.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");

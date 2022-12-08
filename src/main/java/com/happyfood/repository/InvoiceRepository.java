@@ -37,4 +37,6 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
     @Query("select invoice from Invoice invoice left join fetch invoice.order where invoice.id =:id")
     Optional<Invoice> findOneWithToOneRelationships(@Param("id") Long id);
+
+    Optional<Invoice> findByInvoiceNumber(Integer invoiceNumber);
 }
