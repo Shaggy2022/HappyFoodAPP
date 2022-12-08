@@ -131,7 +131,6 @@ public class CustomerResource {
         @Valid @RequestBody CustomerDTO customerDTO
     ) throws URISyntaxException {
         log.debug("REST request to update Customer : {}, {}", id, customerDTO);
-        Optional<DocumentType> documentTypeOptional = documentTypeRepository.findById(customerDTO.getDocumentType().getId());
         if (customerDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,24 +140,7 @@ public class CustomerResource {
 
         if (!customerRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
-        } else if (documentTypeOptional.isEmpty()) {
-            throw new BadRequestAlertException("The document type doesnot Exist", ENTITY_NAME, "DocumentTypeDoesNotExists");
-        } else if (
-            customerRepository.findByDocumentNumberAndDocumentType(customerDTO.getDocumentNumber(), documentTypeOptional.get()).isPresent()
-        ) {
-            throw new BadRequestAlertException(
-                "A customer with the same type and document number already exists.",
-                ENTITY_NAME,
-                "DocumentTypeAndDocumentNumberExists"
-            );
-        } else if (customerRepository.findByDocumentNumber(customerDTO.getDocumentNumber()).isPresent()) {
-            throw new BadRequestAlertException(
-                "There is already a customer with the same document number.",
-                ENTITY_NAME,
-                "DocumentNumberExists"
-            );
         }
-
         CustomerDTO result = customerService.update(customerDTO);
         return ResponseEntity
             .ok()
@@ -202,7 +184,6 @@ public class CustomerResource {
         if (!customerRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
-
         Optional<CustomerDTO> result = customerService.partialUpdate(customerDTO);
 
         return ResponseUtil.wrapOrNotFound(
