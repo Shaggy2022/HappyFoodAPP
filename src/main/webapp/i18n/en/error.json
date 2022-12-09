@@ -17,6 +17,7 @@
     "InvoiceNumberExists": "There is already an invoice with the same invoice number.",
     "SerialExists": "There is already a product with the same serial.",
     "ProductExists": "This product is already invoiced.",
-    "DocumentNumberManagerExists": "There is already a manager with the same document number."
+    "DocumentNumberManagerExists": "There is already a manager with the same document number.",
+    "DocumentNumberEmployeeExists": "There is already a employee with the same document number."
   }
 }

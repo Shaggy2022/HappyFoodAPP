@@ -1,6 +1,7 @@
 package com.happyfood.repository;
 
 import com.happyfood.domain.Employee;
+import com.happyfood.domain.Manager;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -41,4 +42,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
         "select employee from Employee employee left join fetch employee.user left join fetch employee.workDay left join fetch employee.manager where employee.id =:id"
     )
     Optional<Employee> findOneWithToOneRelationships(@Param("id") Long id);
+
+    Optional<Employee> findByDocumentNumber(String documentNumber);
 }

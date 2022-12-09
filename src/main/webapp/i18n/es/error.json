@@ -17,6 +17,7 @@
     "InvoiceNumberExists": "Ya hay una factura con el mismo número de factura.",
     "SerialExists": "Ya existe un producto con el mismo serial.",
     "ProductExists": "Este producto ya está facturado.",
-    "DocumentNumberManagerExists": "Ya existe un gerente con el mismo número de documento."
+    "DocumentNumberManagerExists": "Ya existe un gerente con el mismo número de documento.",
+    "DocumentNumberEmployeeExists": "Ya existe un empleado con el mismo número de documento."
   }
 }

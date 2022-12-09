@@ -63,6 +63,12 @@ public class EmployeeResource {
         log.debug("REST request to save Employee : {}", employeeDTO);
         if (employeeDTO.getId() != null) {
             throw new BadRequestAlertException("A new employee cannot already have an ID", ENTITY_NAME, "idexists");
+        } else if (employeeRepository.findByDocumentNumber(employeeDTO.getDocumentNumber()).isPresent()) {
+            throw new BadRequestAlertException(
+                "There is already a employee with the same document number.",
+                ENTITY_NAME,
+                "DocumentNumberEmployeeExists"
+            );
         }
         EmployeeDTO result = employeeService.save(employeeDTO);
         return ResponseEntity
