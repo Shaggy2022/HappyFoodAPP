@@ -436,78 +436,12 @@
             <li>
               <a
                 class="dropdown-item"
-                routerLink="invoice"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
-                <span happyTranslate="global.menu.entities.invoice">Invoice</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="product"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
-                <span happyTranslate="global.menu.entities.product">Product</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="order"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
-                <span happyTranslate="global.menu.entities.order">Order</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li
-          *happyHasAnyAuthority="'ROLE_USER'"
-          ngbDropdown
-          class="nav-item dropdown pointer"
-          display="dynamic"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="user-menu" data-cy="entity">
-            <span>
-              <fa-icon icon="user"></fa-icon>
-              <span happyTranslate="global.menu.user.main">Usuario</span>
-            </span>
-          </a>
-          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="document-type"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
-                <span happyTranslate="global.menu.entities.documentType">Document Type</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
                 routerLink="customer"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
+                <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
                 <span happyTranslate="global.menu.entities.customer">Customer</span>
               </a>
             </li>
@@ -519,7 +453,7 @@
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
+                <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
                 <span happyTranslate="global.menu.entities.invoice">Invoice</span>
               </a>
             </li>
@@ -531,56 +465,8 @@
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
+                <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
                 <span happyTranslate="global.menu.entities.product">Product</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="invoice-product"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
-                <span happyTranslate="global.menu.entities.invoiceProduct">Invoice Product</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="work-day"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
-                <span happyTranslate="global.menu.entities.workDay">Work Day</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="horary"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
-                <span happyTranslate="global.menu.entities.horary">Horary</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="manager"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
-                <span happyTranslate="global.menu.entities.manager">Manager</span>
               </a>
             </li>
             <li>
@@ -615,7 +501,7 @@
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
-                <fa-icon icon="eye" [fixedWidth]="true"></fa-icon>
+                <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
                 <span happyTranslate="global.menu.entities.inventory">Inventory</span>
               </a>
             </li>

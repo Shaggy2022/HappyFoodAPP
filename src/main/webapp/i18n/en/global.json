@@ -74,6 +74,10 @@
         "logout": "Sign out",
         "register": "Register"
       },
+      "administrationmanager": {
+        "main": "Administrationmanager",
+        "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+      },
       "admin": {
         "main": "Administration",
         "userManagement": "User management",

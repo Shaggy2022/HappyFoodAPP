@@ -49,8 +49,11 @@
         "manager": "Gerente",
         "employee": "Empleado",
         "order": "Orden",
-        "inventory": "Inventario",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "inventory": "Inventario"
+      },
+      "administrationmanager": {
+        "main": "Administración Del Gerente",
+        "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
       },
       "entities": {
         "main": "Entidades",
