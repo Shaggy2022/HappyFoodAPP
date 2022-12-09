@@ -1,5 +1,6 @@
 package com.happyfood.repository;
 
+import com.happyfood.domain.Invoice;
 import com.happyfood.domain.Product;
 import java.util.List;
 import java.util.Optional;
@@ -37,4 +38,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("select product from Product product left join fetch product.inventory where product.id =:id")
     Optional<Product> findOneWithToOneRelationships(@Param("id") Long id);
+
+    Optional<Product> findBySerial(String serial);
 }

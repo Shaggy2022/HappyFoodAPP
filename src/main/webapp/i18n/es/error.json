@@ -14,6 +14,7 @@
     "documentNameExists": "Ya existe un tipo de documento con ese nombre.",
     "DocumentTypeAndDocumentNumberExists": "Ya existe un cliente con el mismo tipo y número de documento.",
     "DocumentNumberExists": "Ya existe un cliente con el mismo número de documento.",
-    "InvoiceNumberExists": "ya hay una factura con el mismo número de factura."
+    "InvoiceNumberExists": "Ya hay una factura con el mismo número de factura.",
+    "SerialExists": "Ya existe un producto con el mismo serial."
   }
 }

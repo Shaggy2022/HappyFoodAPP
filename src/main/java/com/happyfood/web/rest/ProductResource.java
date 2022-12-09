@@ -71,6 +71,8 @@ public class ProductResource {
         log.debug("REST request to save Product : {}", productDTO);
         if (productDTO.getId() != null) {
             throw new BadRequestAlertException("A new product cannot already have an ID", ENTITY_NAME, "idexists");
+        } else if (productRepository.findBySerial(productDTO.getSerial()).isPresent()) {
+            throw new BadRequestAlertException("There is already a product with the same serial.", ENTITY_NAME, "SerialExists");
         }
         ProductDTO result = productService.save(productDTO);
         return ResponseEntity
