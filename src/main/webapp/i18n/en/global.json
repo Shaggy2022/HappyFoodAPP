@@ -5,6 +5,51 @@
     "menu": {
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+      "customer": {
+        "main": "Customer",
+        "invoice": "Invoice",
+        "product": "Product",
+        "order": "Order",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "employee": {
+        "main": "Employee",
+        "invoice": "Invoice",
+        "product": "Product",
+        "employee": "Employee",
+        "order": "Order",
+        "inventory": "Inventory",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "user": {
+        "main": "User",
+        "customer": "Customer",
+        "invoice": "Invoice",
+        "product": "Product",
+        "invoiceProduct": "Invoice Product",
+        "workDay": "Work Day",
+        "horary": "Horary",
+        "manager": "Manager",
+        "employee": "Employee",
+        "order": "Order",
+        "inventory": "Inventory",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "manager": {
+        "main": "Manager",
+        "documentType": "Document Type",
+        "customer": "Customer",
+        "invoice": "Invoice",
+        "product": "Product",
+        "invoiceProduct": "Invoice Product",
+        "workDay": "Work Day",
+        "horary": "Horary",
+        "manager": "Manager",
+        "employee": "Employee",
+        "order": "Order",
+        "inventory": "Inventory",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
       "entities": {
         "main": "Entities",
         "documentType": "Document Type",

@@ -5,6 +5,53 @@
     "menu": {
       "home": "Inicio",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+      "customer": {
+        "main": "Cliente",
+        "invoice": "Factura",
+        "product": "Producto",
+        "order": "Orden",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "employee": {
+        "main": "Empleado",
+        "customer": "Cliente",
+        "invoice": "Factura",
+        "product": "Producto",
+        "employee": "Empleado",
+        "order": "Orden",
+        "inventory": "Inventario",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "user": {
+        "main": "Usuario",
+        "documentType": "Tipo de Documento",
+        "customer": "Cliente",
+        "invoice": "Factura",
+        "product": "Producto",
+        "invoiceProduct": "Producto Facturado",
+        "workDay": "Jornada Laboral",
+        "horary": "Horario",
+        "manager": "Gerente",
+        "employee": "Empleado",
+        "order": "Orden",
+        "inventory": "Inventario",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "manager": {
+        "main": "Gerente",
+        "documentType": "Tipo de Documento",
+        "customer": "Cliente",
+        "invoice": "Factura",
+        "product": "Producto",
+        "invoiceProduct": "Producto Facturado",
+        "workDay": "Jornada Laboral",
+        "horary": "Horario",
+        "manager": "Gerente",
+        "employee": "Empleado",
+        "order": "Orden",
+        "inventory": "Inventario",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
       "entities": {
         "main": "Entidades",
         "documentType": "Tipo de Documento",
