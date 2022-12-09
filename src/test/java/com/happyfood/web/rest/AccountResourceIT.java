@@ -345,8 +345,9 @@ class AccountResourceIT {
         Optional<User> userDup = userRepository.findOneWithAuthoritiesByLogin("badguy");
         assertThat(userDup).isPresent();
         assertThat(userDup.get().getAuthorities())
-            .hasSize(1)
-            .containsExactly(authorityRepository.findById(AuthoritiesConstants.USER).get());
+            .hasSize(2)
+            .contains(authorityRepository.findById(AuthoritiesConstants.USER).get())
+            .contains(authorityRepository.findById(AuthoritiesConstants.CUSTOMER).get());
     }
 
     @Test
