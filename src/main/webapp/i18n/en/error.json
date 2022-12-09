@@ -15,6 +15,8 @@
     "DocumentTypeAndDocumentNumberExists": "A customer with the same type and document number already exists.",
     "DocumentNumberExists": "There is already a customer with the same document number.",
     "InvoiceNumberExists": "There is already an invoice with the same invoice number.",
-    "SerialExists": "There is already a product with the same serial."
+    "SerialExists": "There is already a product with the same serial.",
+    "ProductExists": "This product is already invoiced.",
+    "DocumentNumberManagerExists": "There is already a manager with the same document number."
   }
 }

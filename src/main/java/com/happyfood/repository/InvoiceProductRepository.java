@@ -1,6 +1,7 @@
 package com.happyfood.repository;
 
 import com.happyfood.domain.InvoiceProduct;
+import com.happyfood.domain.Product;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;

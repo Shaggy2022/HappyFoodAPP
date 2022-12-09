@@ -64,6 +64,7 @@ public class WorkDayResource {
         if (workDayDTO.getId() != null) {
             throw new BadRequestAlertException("A new workDay cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
         WorkDayDTO result = workDayService.save(workDayDTO);
         return ResponseEntity
             .created(new URI("/api/work-days/" + result.getId()))

@@ -1,5 +1,7 @@
 package com.happyfood.web.rest;
 
+import com.happyfood.domain.DocumentType;
+import com.happyfood.domain.Manager;
 import com.happyfood.repository.ManagerRepository;
 import com.happyfood.security.AuthoritiesConstants;
 import com.happyfood.service.ManagerService;
@@ -10,6 +12,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.print.attribute.standard.DocumentName;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
@@ -63,7 +66,14 @@ public class ManagerResource {
         log.debug("REST request to save Manager : {}", managerDTO);
         if (managerDTO.getId() != null) {
             throw new BadRequestAlertException("A new manager cannot already have an ID", ENTITY_NAME, "idexists");
+        } else if (managerRepository.findByDocumentNumber(managerDTO.getDocumentNumber()).isPresent()) {
+            throw new BadRequestAlertException(
+                "There is already a manager with the same document number.",
+                ENTITY_NAME,
+                "DocumentNumberManagerExists"
+            );
         }
+
         ManagerDTO result = managerService.save(managerDTO);
         return ResponseEntity
             .created(new URI("/api/managers/" + result.getId()))

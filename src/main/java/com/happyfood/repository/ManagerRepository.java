@@ -1,5 +1,7 @@
 package com.happyfood.repository;
 
+import com.happyfood.domain.Customer;
+import com.happyfood.domain.DocumentType;
 import com.happyfood.domain.Manager;
 import java.util.List;
 import java.util.Optional;
@@ -37,4 +39,6 @@ public interface ManagerRepository extends JpaRepository<Manager, Long> {
 
     @Query("select manager from Manager manager left join fetch manager.user where manager.id =:id")
     Optional<Manager> findOneWithToOneRelationships(@Param("id") Long id);
+
+    Optional<Manager> findByDocumentNumber(String documentNumber);
 }
