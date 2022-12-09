@@ -164,13 +164,8 @@ public class InvoiceResource {
 
         if (!invoiceRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
-        } else if (invoiceRepository.findByInvoiceNumber(invoiceDTO.getInvoiceNumber()).isPresent()) {
-            throw new BadRequestAlertException(
-                "There is already an invoice with the same invoice number.",
-                ENTITY_NAME,
-                "InvoiceNumberExists"
-            );
         }
+
         Optional<InvoiceDTO> result = invoiceService.partialUpdate(invoiceDTO);
 
         return ResponseUtil.wrapOrNotFound(
