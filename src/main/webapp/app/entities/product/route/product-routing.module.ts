@@ -6,6 +6,7 @@ import { ProductComponent } from '../list/product.component';
 import { ProductDetailComponent } from '../detail/product-detail.component';
 import { ProductUpdateComponent } from '../update/product-update.component';
 import { ProductRoutingResolveService } from './product-routing-resolve.service';
+import { Authority } from '../../../config/authority.constants';
 
 const productRoute: Routes = [
   {
@@ -22,6 +23,9 @@ const productRoute: Routes = [
     resolve: {
       product: ProductRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE, Authority.CUSTOMER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -30,6 +34,9 @@ const productRoute: Routes = [
     resolve: {
       product: ProductRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -37,6 +44,9 @@ const productRoute: Routes = [
     component: ProductUpdateComponent,
     resolve: {
       product: ProductRoutingResolveService,
+    },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
     },
     canActivate: [UserRouteAccessService],
   },
