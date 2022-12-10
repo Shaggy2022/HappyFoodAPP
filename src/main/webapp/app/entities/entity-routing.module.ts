@@ -73,7 +73,7 @@ import { Authority } from '../config/authority.constants';
         path: 'employee',
         data: {
           pageTitle: 'happyFoodApp.employee.home.title',
-          authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+          authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE, Authority.CUSTOMER],
         },
         loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
       },

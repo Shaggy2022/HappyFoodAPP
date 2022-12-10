@@ -24,7 +24,7 @@ const employeeRoute: Routes = [
       employee: EmployeeRoutingResolveService,
     },
     data: {
-      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE, Authority.CUSTOMER],
     },
     canActivate: [UserRouteAccessService],
   },
