@@ -39,7 +39,10 @@ import { Authority } from '../config/authority.constants';
       },
       {
         path: 'invoice-product',
-        data: { pageTitle: 'happyFoodApp.invoiceProduct.home.title' },
+        data: {
+          pageTitle: 'happyFoodApp.invoiceProduct.home.title',
+          authorities: [Authority.ADMIN, Authority.MANAGER],
+        },
         loadChildren: () => import('./invoice-product/invoice-product.module').then(m => m.InvoiceProductModule),
       },
       {

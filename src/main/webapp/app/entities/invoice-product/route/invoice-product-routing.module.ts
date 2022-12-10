@@ -6,6 +6,7 @@ import { InvoiceProductComponent } from '../list/invoice-product.component';
 import { InvoiceProductDetailComponent } from '../detail/invoice-product-detail.component';
 import { InvoiceProductUpdateComponent } from '../update/invoice-product-update.component';
 import { InvoiceProductRoutingResolveService } from './invoice-product-routing-resolve.service';
+import { Authority } from '../../../config/authority.constants';
 
 const invoiceProductRoute: Routes = [
   {
@@ -22,6 +23,9 @@ const invoiceProductRoute: Routes = [
     resolve: {
       invoiceProduct: InvoiceProductRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -30,6 +34,9 @@ const invoiceProductRoute: Routes = [
     resolve: {
       invoiceProduct: InvoiceProductRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -37,6 +44,9 @@ const invoiceProductRoute: Routes = [
     component: InvoiceProductUpdateComponent,
     resolve: {
       invoiceProduct: InvoiceProductRoutingResolveService,
+    },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
     },
     canActivate: [UserRouteAccessService],
   },
