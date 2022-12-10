@@ -6,6 +6,7 @@ import { DocumentTypeComponent } from '../list/document-type.component';
 import { DocumentTypeDetailComponent } from '../detail/document-type-detail.component';
 import { DocumentTypeUpdateComponent } from '../update/document-type-update.component';
 import { DocumentTypeRoutingResolveService } from './document-type-routing-resolve.service';
+import { Authority } from '../../../config/authority.constants';
 
 const documentTypeRoute: Routes = [
   {
@@ -22,6 +23,9 @@ const documentTypeRoute: Routes = [
     resolve: {
       documentType: DocumentTypeRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -30,6 +34,9 @@ const documentTypeRoute: Routes = [
     resolve: {
       documentType: DocumentTypeRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -37,6 +44,9 @@ const documentTypeRoute: Routes = [
     component: DocumentTypeUpdateComponent,
     resolve: {
       documentType: DocumentTypeRoutingResolveService,
+    },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
     },
     canActivate: [UserRouteAccessService],
   },

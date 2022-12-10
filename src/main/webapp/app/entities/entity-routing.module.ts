@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Authority } from '../config/authority.constants';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
         path: 'document-type',
-        data: { pageTitle: 'happyFoodApp.documentType.home.title' },
+        data: {
+          pageTitle: 'happyFoodApp.documentType.home.title',
+          authorities: [Authority.ADMIN, Authority.MANAGER],
+        },
         loadChildren: () => import('./document-type/document-type.module').then(m => m.DocumentTypeModule),
       },
       {
