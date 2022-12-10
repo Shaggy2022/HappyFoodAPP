@@ -6,6 +6,7 @@ import { WorkDayComponent } from '../list/work-day.component';
 import { WorkDayDetailComponent } from '../detail/work-day-detail.component';
 import { WorkDayUpdateComponent } from '../update/work-day-update.component';
 import { WorkDayRoutingResolveService } from './work-day-routing-resolve.service';
+import { Authority } from '../../../config/authority.constants';
 
 const workDayRoute: Routes = [
   {
@@ -22,6 +23,9 @@ const workDayRoute: Routes = [
     resolve: {
       workDay: WorkDayRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -30,6 +34,9 @@ const workDayRoute: Routes = [
     resolve: {
       workDay: WorkDayRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -37,6 +44,9 @@ const workDayRoute: Routes = [
     component: WorkDayUpdateComponent,
     resolve: {
       workDay: WorkDayRoutingResolveService,
+    },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
     },
     canActivate: [UserRouteAccessService],
   },

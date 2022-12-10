@@ -47,7 +47,10 @@ import { Authority } from '../config/authority.constants';
       },
       {
         path: 'work-day',
-        data: { pageTitle: 'happyFoodApp.workDay.home.title' },
+        data: {
+          pageTitle: 'happyFoodApp.workDay.home.title',
+          authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+        },
         loadChildren: () => import('./work-day/work-day.module').then(m => m.WorkDayModule),
       },
       {
