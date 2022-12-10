@@ -6,6 +6,7 @@ import { InventoryComponent } from '../list/inventory.component';
 import { InventoryDetailComponent } from '../detail/inventory-detail.component';
 import { InventoryUpdateComponent } from '../update/inventory-update.component';
 import { InventoryRoutingResolveService } from './inventory-routing-resolve.service';
+import { Authority } from '../../../config/authority.constants';
 
 const inventoryRoute: Routes = [
   {
@@ -22,6 +23,9 @@ const inventoryRoute: Routes = [
     resolve: {
       inventory: InventoryRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -30,6 +34,9 @@ const inventoryRoute: Routes = [
     resolve: {
       inventory: InventoryRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -37,6 +44,9 @@ const inventoryRoute: Routes = [
     component: InventoryUpdateComponent,
     resolve: {
       inventory: InventoryRoutingResolveService,
+    },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
     },
     canActivate: [UserRouteAccessService],
   },

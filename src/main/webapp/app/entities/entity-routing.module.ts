@@ -73,7 +73,7 @@ import { Authority } from '../config/authority.constants';
         path: 'employee',
         data: {
           pageTitle: 'happyFoodApp.employee.home.title',
-          authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE, Authority.CUSTOMER],
+          authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
         },
         loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
       },
@@ -87,7 +87,10 @@ import { Authority } from '../config/authority.constants';
       },
       {
         path: 'inventory',
-        data: { pageTitle: 'happyFoodApp.inventory.home.title' },
+        data: {
+          pageTitle: 'happyFoodApp.inventory.home.title',
+          authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+        },
         loadChildren: () => import('./inventory/inventory.module').then(m => m.InventoryModule),
       },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
