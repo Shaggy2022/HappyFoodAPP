@@ -6,6 +6,7 @@ import { ManagerComponent } from '../list/manager.component';
 import { ManagerDetailComponent } from '../detail/manager-detail.component';
 import { ManagerUpdateComponent } from '../update/manager-update.component';
 import { ManagerRoutingResolveService } from './manager-routing-resolve.service';
+import { Authority } from '../../../config/authority.constants';
 
 const managerRoute: Routes = [
   {
@@ -22,6 +23,9 @@ const managerRoute: Routes = [
     resolve: {
       manager: ManagerRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -30,6 +34,9 @@ const managerRoute: Routes = [
     resolve: {
       manager: ManagerRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -37,6 +44,9 @@ const managerRoute: Routes = [
     component: ManagerUpdateComponent,
     resolve: {
       manager: ManagerRoutingResolveService,
+    },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
     },
     canActivate: [UserRouteAccessService],
   },
