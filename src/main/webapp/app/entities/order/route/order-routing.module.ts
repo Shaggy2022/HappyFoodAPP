@@ -6,6 +6,7 @@ import { OrderComponent } from '../list/order.component';
 import { OrderDetailComponent } from '../detail/order-detail.component';
 import { OrderUpdateComponent } from '../update/order-update.component';
 import { OrderRoutingResolveService } from './order-routing-resolve.service';
+import { Authority } from '../../../config/authority.constants';
 
 const orderRoute: Routes = [
   {
@@ -22,6 +23,9 @@ const orderRoute: Routes = [
     resolve: {
       order: OrderRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE, Authority.CUSTOMER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -30,6 +34,9 @@ const orderRoute: Routes = [
     resolve: {
       order: OrderRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE, Authority.CUSTOMER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -37,6 +44,9 @@ const orderRoute: Routes = [
     component: OrderUpdateComponent,
     resolve: {
       order: OrderRoutingResolveService,
+    },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER, Authority.EMPLOYEE, Authority.CUSTOMER],
     },
     canActivate: [UserRouteAccessService],
   },
