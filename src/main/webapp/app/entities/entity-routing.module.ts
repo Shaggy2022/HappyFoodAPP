@@ -55,7 +55,10 @@ import { Authority } from '../config/authority.constants';
       },
       {
         path: 'horary',
-        data: { pageTitle: 'happyFoodApp.horary.home.title' },
+        data: {
+          pageTitle: 'happyFoodApp.horary.home.title',
+          authorities: [Authority.ADMIN, Authority.MANAGER],
+        },
         loadChildren: () => import('./horary/horary.module').then(m => m.HoraryModule),
       },
       {

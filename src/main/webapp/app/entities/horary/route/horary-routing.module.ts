@@ -6,6 +6,7 @@ import { HoraryComponent } from '../list/horary.component';
 import { HoraryDetailComponent } from '../detail/horary-detail.component';
 import { HoraryUpdateComponent } from '../update/horary-update.component';
 import { HoraryRoutingResolveService } from './horary-routing-resolve.service';
+import { Authority } from '../../../config/authority.constants';
 
 const horaryRoute: Routes = [
   {
@@ -22,6 +23,9 @@ const horaryRoute: Routes = [
     resolve: {
       horary: HoraryRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -30,6 +34,9 @@ const horaryRoute: Routes = [
     resolve: {
       horary: HoraryRoutingResolveService,
     },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -37,6 +44,9 @@ const horaryRoute: Routes = [
     component: HoraryUpdateComponent,
     resolve: {
       horary: HoraryRoutingResolveService,
+    },
+    data: {
+      authorities: [Authority.ADMIN, Authority.MANAGER],
     },
     canActivate: [UserRouteAccessService],
   },
